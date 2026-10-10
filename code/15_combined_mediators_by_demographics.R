@@ -111,7 +111,7 @@ results <- imap_dfr(models, ~ tidy(.x) %>%
   transmute(outcome = .y, term = contrast,
             estimate = as.numeric(estimate), std.error = as.numeric(std.error),
             p.value = as.numeric(p.value)))
-write_csv(results, "output/combined_mediators_by_demographics.csv")
+write_csv(results, "output/tab_s17.csv")
 
 # Hand-broken into short lines (see datasummary-balance-notes-overflow memory):
 # modelsummary writes one multicolumn row per element of `notes`, so each line
@@ -135,11 +135,11 @@ print(modelsummary(models, shape = contrast ~ model,
 cap <- paste("Demographic differences in discernment and its candidate",
              "mediators (marginal effects; ref = White / Female / <25 /",
              "No College / Democrat).")
-out_local <- "output/tab_combined_mediators_by_demographics.tex"
+out_local <- "output/tab_s17.tex"
 modelsummary(models, shape = contrast ~ model,
              gof_map = list(list("raw"="nobs","clean"="N","fmt"=0)),
              stars = c('*'=.05,'**'=.01,'***'=.001), escape = FALSE,
              title = cap, notes = note, output = out_local)
 
-cat("\nWrote:\n output/combined_mediators_by_demographics.csv\n",
+cat("\nWrote:\n output/tab_s17.csv\n",
     out_local, "\n")

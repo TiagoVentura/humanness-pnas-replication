@@ -18,7 +18,7 @@ pacman::p_load(tidyverse, scales, lubridate, here, janitor,
 
 source("code/00_utils.R")
 
-# glmer control used by the persona x party logit (fig4_incl_n_logit)
+# glmer control used by the persona x party logit (Figure 4)
 glm_ctrl <- glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 2e5))
 
 # Data + preprocessing ------------------------------------------------------
@@ -209,11 +209,11 @@ panel_C <- ggplot(res_news_logit,
                                     family = my_font,
                                     margin = margin(t = 8)))
 
-save_function("model_combined_ABC_logit.pdf", 14, 12)
-save_function("model_combined_ABC_logit.png", 14, 12)
+save_function("fig3.pdf", 14, 12)
+save_function("fig3.png", 14, 12)
 
 # =============================================================================
-# D) Persona x Party — logit (drives fig4_incl_n) -----------------------------
+# D) Persona x Party — logit (Figure 4) -----------------------------
 # =============================================================================
 mod_persona_logit <- glmer(
   binary_response ~ persona * party_id_imputation +
@@ -321,5 +321,5 @@ p_rep_logit <- make_persona_panel_logit(
 
 p_dem_logit + p_rep_logit + plot_layout(ncol = 2, widths = c(1, 1))
 
-save_function("fig4_incl_n_logit.pdf", 14, 5)
-save_function("fig4_incl_n_logit.png", 14, 5)
+save_function("fig4.pdf", 14, 5)
+save_function("fig4.png", 14, 5)

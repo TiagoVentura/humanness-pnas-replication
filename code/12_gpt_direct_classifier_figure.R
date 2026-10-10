@@ -123,6 +123,6 @@ ggplot(res, aes(y = comparison, x = estimate, fill = source)) +
         axis.text.x     = element_text(size = 11, family = my_font),
         axis.title.x    = element_text(size = 12, hjust = 0.5))
 
-save_function("fig_direct_pairs_human_vs_ai_gpt5_all_posts.png")
-save_function("fig_direct_pairs_human_vs_ai_gpt5_all_posts.pdf")
+save_function("fig_s13.png")
+save_function("fig_s13.pdf")
 

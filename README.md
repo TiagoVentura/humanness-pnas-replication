@@ -14,7 +14,7 @@ The R code used in the article and the SI Appendix can be found in the folder `*
 
 The datasets for the full replication of the article and the SI Appendix can be found in the folder `**data**`.
 
-All figures and tables produced by the code are written to the folder `**output**`.
+All figures and tables produced by the code are written to the folder `**output**`, named after their number in the article (`fig1.pdf`, `fig_s5.pdf`, `tab_s12.tex`, and so on).
 
 We also provide a [codebook](codebook.md) describing the variables in the analysis datasets.
 
@@ -56,7 +56,7 @@ Two steps are not part of `run_all.R`: `11_gpt_ai_detector.R` calls the OpenAI A
 
 - `07_direct_pairs.R`: AI-detection rates in human-AI pairs and the validation of PHI scores against detection. Produces Figures S5, S6, and S7.
 
-- `08_semantic_features.R`: regressions of PHI scores on sentiment, emotion, and civility features, with robustness checks across classifier families and by post source, and the stylistic-marker analysis. Produces Figure 2 in the main article; Figures S2, S8, S9, and S10 and Tables S4 and S5 in the SI Appendix.
+- `08_semantic_features.R`: regressions of PHI scores on sentiment, emotion, and civility features, with robustness checks across classifier families and by post source, and the stylistic-marker analysis. Produces Figure 2 in the main article; Figures S2, S8, S9, S10, and S12 and Tables S4 and S5 in the SI Appendix.
 
 - `09_logit.R`: logistic models of correct AI identification on respondent characteristics, and the persona-by-party model. Produces Figures 3 and 4 in the main article.
 
@@ -68,7 +68,7 @@ Two steps are not part of `run_all.R`: `11_gpt_ai_detector.R` calls the OpenAI A
 
 - `13_balance_table_demographics.R`: demographic composition of Survey 1, Survey 2, and the general population. Produces Table S19.
 
-- `14_qualitative_cues.R`: codes the open-ended responses on the cues participants used and cross-tabulates cue by direction. Produces Figure S4 and `summary_A_to_E.csv`, the counts quoted in the SI text.
+- `14_qualitative_cues.R`: codes the open-ended responses on the cues participants used and cross-tabulates cue by direction. Produces Figure S4 and `fig_s4_cue_counts.csv`, the counts quoted in the SI text.
 
 - `15_combined_mediators_by_demographics.R`: demographic differences in detection and in the candidate mechanisms measured in the follow-up survey. Produces Table S17.
 

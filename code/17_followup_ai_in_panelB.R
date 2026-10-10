@@ -92,7 +92,7 @@ cap <- paste("Adding AI usage and digital literacy to the attitudinal model of A
 mlist <- list("(1) Attitudinal (full)"             = m1,
               "(2) + AI usage & literacy (follow-up)" = m2)
 
-out_local <- "output/tab_followup_ai_added_panelB.tex"
+out_local <- "output/tab_s18.tex"
 modelsummary(mlist, output = out_local, coef_map = cm,
              gof_map = c("nobs"), stars = c('*' = .05, '**' = .01, '***' = .001),
              title = cap, notes = fnote)

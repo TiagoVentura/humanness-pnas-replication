@@ -160,12 +160,12 @@ g1 <- ggplot(res_g1, aes(y = comparison, x = estimate, fill = source)) +
         axis.text.x = element_text(size = 11, family = my_font),
         axis.title.x = element_text(size = 12, hjust = 0.5))
 g1
-save_function("fig_direct_pairs_human_vs_ai.png")
-save_function("fig_direct_pairs_human_vs_ai.pdf")
+save_function("fig_s5.png")
+save_function("fig_s5.pdf")
 
 
 # Graph 2 — AI models only: Pooled (A) + Per-platform (B) -------------------
-# Mirrors fig1_humaness_combined.pdf layout (panel A pooled + panel B per-
+# Mirrors the Figure 1 layout (panel A pooled + panel B per-
 # platform), but with bars + 50% reference line, and no Human row.
 res_g2_pool <- res_pool %>%
   filter(!str_detect(as.character(model), "Human")) %>%
@@ -227,8 +227,8 @@ g2_combined <- g2a + g2b +
 
 g2_combined
 
-save_function("fig_direct_pairs_by_model.png")
-save_function("fig_direct_pairs_by_model.pdf")
+save_function("fig_s6.png")
+save_function("fig_s6.pdf")
 
 
 
@@ -270,6 +270,6 @@ g3 <- ggplot(bin_summary, aes(x = phi_mid, y = prop_ai)) +
         axis.title.y = element_text(size = 12))
 g3
 
-save_function("sm_validation_phi.png")
-save_function("sm_validation_phi.pdf")
+save_function("fig_s7.png")
+save_function("fig_s7.pdf")
 

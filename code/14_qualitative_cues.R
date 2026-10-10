@@ -3,7 +3,7 @@
 # author: Sejin Paik
 # Purpose: Code the open-ended responses on the cues used to judge authorship
 #          and cross-tabulate cue by direction. Produces SI Figure S4 and
-#          output/summary_A_to_E.csv.
+#          output/fig_s4_cue_counts.csv.
 # Machine: macOS Sequoia 15.6.1
 # R version 4.5.1
 ##############################################################################
@@ -185,7 +185,7 @@ dplyr::bind_rows(
 ) %>%
   select(variable, code, label, n, pct) %>%
   arrange(variable, desc(n)) %>%
-  readr::write_csv(file.path(out_dir, "summary_A_to_E.csv"))
+  readr::write_csv(file.path(out_dir, "fig_s4_cue_counts.csv"))
 
 # Heatmap Cue1 x Direction (with counts)
 heat_df <- df %>%
@@ -201,4 +201,4 @@ p_heat <- ggplot(heat_df, aes(x = label_dir, y = label_cue, fill = n)) +
   labs(x = "Direction (A)", y = "Cue 1 (B)", title = "Counts: Cue 1 × Direction") +
   theme_minimal(base_size = 12)
 
-ggsave(file.path(out_dir, "fig4_qual.png"), p_heat, width = 9, height = 6.5, dpi = 150)
+ggsave(file.path(out_dir, "fig_s4.png"), p_heat, width = 9, height = 6.5, dpi = 150)

@@ -120,6 +120,6 @@ p_kde_A <- base_plot +
         strip.text = element_text(size = 12, face="bold"))
 
 p_kde_A
-save_function("fig_si_kde_platforms_A_clip.png", width = 12, height = 8)
-save_function("fig_si_kde_platforms_A_clip.pdf", width = 12, height = 8)
+save_function("fig_s3.png", width = 12, height = 8)
+save_function("fig_s3.pdf", width = 12, height = 8)
 

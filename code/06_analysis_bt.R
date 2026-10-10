@@ -54,7 +54,7 @@ bt %>% count(platform, model) %>%
   pivot_wider(names_from = platform, values_from = n) %>% 
   kable(format = "latex", booktabs = TRUE, 
         caption = "Final counts of posts by platform and model") %>% 
-  save_table("tab_s3_post_counts.tex")
+  save_table("tab_s3.tex")
 
 
 # stats on table s23
@@ -64,7 +64,7 @@ bt %>% group_by(platform, model) %>%
             median = median(normalized_ability), .groups = "drop") %>% 
   kable(format = "latex", booktabs = TRUE, digits = 2, 
         caption = "PHI scores by platform and model") %>% 
-  save_table("tab_s23_phi_stats_by_model.tex")
+  save_table("tab_s23.tex")
 
 # Models ------------------------------------------------------------------
 
@@ -92,10 +92,11 @@ res_predictions = avg_predictions(m_human,
                            str_detect(model, "Llama") ~ "Llama"),
          color = fct_rev(fct_relevel(color, c("Human", "GPT", "Llama"))))
 
+# produce table s24
 res_predictions %>% select(model, estimate, std.error, lb95, up95) %>% 
   kable(format = "latex", booktabs = TRUE, digits = 3, 
         caption = "Marginal means of PHI scores by post source, pooled") %>% 
-  save_table("tab_s24_phi_marginal_means_pooled.tex")
+  save_table("tab_s24_pooled.tex")
 
 # plot combine
 pol = ggplot(res_predictions,
@@ -156,10 +157,11 @@ res_predictions = avg_predictions(m_plat,
                            str_detect(model, "Llama") ~ "Llama"),
          color = fct_rev(fct_relevel(color, c("Human", "GPT", "Llama"))))
 
+# produce table s24 by platform
 res_predictions %>% select(platform, model, estimate, std.error, lb95, up95) %>% 
   kable(format = "latex", booktabs = TRUE, digits = 3, 
         caption = "Marginal means of PHI scores by post source and platform") %>% 
-  save_table("tab_s24_phi_marginal_means_platform.tex")
+  save_table("tab_s24_platform.tex")
 
 # plot combine
 platform = ggplot(res_predictions,
@@ -195,15 +197,15 @@ platform
 
 
 
-# Combine these figures
+# Figure 1
 library(patchwork)
 pol + platform +
   plot_layout(ncol = 2, widths = c(0.75, 1)) &
   theme(axis.title.x = element_text(size = 12, hjust = 0.5),
         axis.title.y = element_text(size = 12))
 
-save_function("fig1_humaness_combined.pdf", 14, 12)
-save_function("fig1_humaness_combined.png", 14, 12)
+save_function("fig1.pdf", 14, 12)
+save_function("fig1.png", 14, 12)
 
 
 # Pairwise comparisons against Human (regression table) -------------------
@@ -264,9 +266,11 @@ output_loc <- file.path(getwd(), "output")
 
 options(knitr.table.format = "latex")
 
+
+
 modelsummary(models_list,
              output = file.path(output_loc, 
-                             "tab_pairwise_vs_human.tex"),
+                             "tab_s12.tex"),
              coef_map = coef_map,
              gof_omit = "AIC|BIC|Log.Lik|RMSE|F",
              stars    = c('*' = .05, '**' = .01, '***' = .001),
@@ -327,7 +331,7 @@ options(knitr.table.format = "latex")
 
 modelsummary(models_list,
              output = file.path(output_loc, 
-                             "tab_pooled_ai_vs_human.tex"),
+                             "tab_s13.tex"),
              coef_map = coef_map,
              gof_omit = "AIC|BIC|Log.Lik|RMSE|F",
              stars    = c('*' = .05, '**' = .01, '***' = .001),

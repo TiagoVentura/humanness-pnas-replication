@@ -102,9 +102,9 @@ ggplot(ft_res,
   geom_vline(aes(xintercept=0), linetype="dashed", color="gray50")  +
   xlim(-0.4, 0.4)
 
-save_function("fig_features2.pdf", 14, 12)
-save_function("fig_features2.png", 14, 12)
-write_csv(ft_res, "output/results_semantic.csv")
+save_function("fig2.pdf", 14, 12)
+save_function("fig2.png", 14, 12)
+write_csv(ft_res, "output/fig2_estimates.csv")
 
 # model
 mod_p <- lm(normalized_ability~ irony*platform +
@@ -179,8 +179,8 @@ ggplot(fit_res,
   facet_wrap(~facet, nrow=1) +
   xlim(-.5, 1)
 
-save_function("sm_fig_features_platform2.pdf", 14, 12)
-save_function("sm_fig_features_platform2.png", 14, 12)
+save_function("fig_s12.pdf", 14, 12)
+save_function("fig_s12.png", 14, 12)
 
 
 # Robustness: TweetEval vs BERTweet ---------------------------------------
@@ -294,8 +294,8 @@ tidy_params <- function(df) {
 plot_bin  <- tidy_params(parameters_bin)
 plot_prob <- tidy_params(parameters_prob)
 
-write_csv(plot_bin,  "output/results_semantic_robustness_binary.csv")
-write_csv(plot_prob, "output/results_semantic_robustness_probability.csv")
+write_csv(plot_bin,  "output/fig_s8_estimates.csv")
+write_csv(plot_prob, "output/fig_s9_estimates.csv")
 
 # Forest plot — three classifier families dodged.
 make_forest <- function(df, x_label) {
@@ -324,13 +324,13 @@ p_prob <- make_forest(plot_prob,
 
 # Single-panel binary version (direct Figure 2 expansion)
 print(p_bin)
-save_function("sm_fig_features_model_robustness_binary.pdf", 14, 10)
-save_function("sm_fig_features_model_robustness_binary.png", 14, 10)
+save_function("fig_s8.pdf", 14, 10)
+save_function("fig_s8.png", 14, 10)
 
 # Single-panel probability version (additional robustness check)
 print(p_prob)
-save_function("sm_fig_features_model_robustness_probability.pdf", 14, 10)
-save_function("sm_fig_features_model_robustness_probability.png", 14, 10)
+save_function("fig_s9.pdf", 14, 10)
+save_function("fig_s9.png", 14, 10)
 
 
 # AI vs Human heterogeneity ----------------------------------------------
@@ -352,7 +352,7 @@ bind_rows(df_ai_hum, df_ai_hum %>% mutate(platform = "All")) %>%
             sd = sd(n_chars_text), .groups = "drop") %>%
   kable(format = "latex", booktabs = TRUE, digits = 1, 
         caption = "Post length in characters by platform: human vs. AI pooled") %>% 
-  save_table("tab_s4_post_length.tex")
+  save_table("tab_s4.tex")
 
 feat_clean <- c("SentimentNegative", "SentimentPositive",
                 "Joy", "Optimism", "Sadness",
@@ -471,8 +471,8 @@ p_ai <- ggplot(plot_het %>% mutate(source_type=fct_rev(source_type)),
 
 p_ai
 
-save_function("sm_fig_features_ai_vs_human.pdf", 14, 10)
-save_function("sm_fig_features_ai_vs_human.png", 14, 10)
+save_function("fig_s10.pdf", 14, 10)
+save_function("fig_s10.png", 14, 10)
 
 
 # Heterogeneity test ------------------------------------------------------
@@ -517,7 +517,7 @@ heterogeneity_results <- bind_rows(
               lb95 = conf.low, up95 = conf.high,
               spec = "Any-feature binary x source"))
 print(heterogeneity_results)
-write_csv(heterogeneity_results, "output/results_r13_heterogeneity_test.csv")
+write_csv(heterogeneity_results, "output/fig_s10_heterogeneity_test.csv")
 
 
 # Platform-specific stylistic markers --------------------------------------
@@ -573,7 +573,7 @@ df_mk %>% group_by(platform, source_type) %>%
                   n = n(), .groups = "drop") %>%
   kable(format = "latex", booktabs = TRUE, digits = 2, 
         caption = "Stylistic markers by platform: human vs. AI pooled (mean per post and percent of posts containing)") %>% 
-  save_table("tab_s5_stylistic_markers.tex")
+  save_table("tab_s5.tex")
 
 # 2. Two models: pooled and source-interacted --------------------------------
 
@@ -645,5 +645,5 @@ p_mk <- ggplot(res_combined,
   fig3_theme
 
 print(p_mk)
-save_function("sm_fig_markers_pooled_vs_source.pdf", 12, 7)
-save_function("sm_fig_markers_pooled_vs_source.png", 12, 7)
+save_function("fig_s2.pdf", 12, 7)
+save_function("fig_s2.png", 12, 7)

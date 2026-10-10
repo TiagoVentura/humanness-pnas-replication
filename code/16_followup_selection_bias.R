@@ -104,7 +104,7 @@ bal <- bind_rows(lv %>% mutate(Sample = "Full sample"),
 
 caption   <- paste("Selection into the follow-up survey: full main-study sample",
                    "vs. follow-up respondents.")
-out_local <- "output/balance_table_followup_selection.tex"
+out_local <- "output/tab_s16.tex"
 
 datasummary_balance(~ Sample, data = bal, fmt = 2,
                     dinm_statistic = "p.value",

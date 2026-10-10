@@ -314,7 +314,7 @@ write_csv(tab_ordered %>% select(Category, Value,
                                  s2_count, s2_pct,
                                  total_count, total_pct,
                                  gen_pop_pct),
-          here("output", "tab_s13_demographics_with_genpop.csv"))
+          here("output", "tab_s19.csv"))
 
 # ---- Build LaTeX via kableExtra (kbl + pack_rows + threeparttable) ------
 
@@ -412,4 +412,4 @@ kab_str <- paste0(
   after_tabular
 )
 
-writeLines(kab_str, here("output", "tab_s13_demographics_with_genpop.tex"))
+writeLines(kab_str, here("output", "tab_s19.tex"))
