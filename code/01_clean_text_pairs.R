@@ -12,7 +12,6 @@
 setwd(here::here())
 getwd()
 
-
 # Packages ----------------------------------------------------------------
 pacman::p_load(tidyverse, scales, lubridate, here, janitor, 
                rebus, RColorBrewer, wesanderson, lubridate, qualtRics, tidylog)
@@ -88,15 +87,6 @@ d_x_yt <- left_join(id, responses, by=c("response_id", "order", "platform", "res
 d_x_yt %>%
   count(binary_response) ## perfect
 
-## examine a single case
-
-## it should have 2 per order per platform
-## 2 becuase I have the left and right text
-d_x_yt %>%
-  count(response_id, order, platform) %>%
-  count(order, n, platform) %>%
-  arrange(as.numeric(order))
-
 
 ## Recode outcome
 d_x_yt <- d_x_yt %>%
@@ -105,24 +95,6 @@ d_x_yt <- d_x_yt %>%
            group_by(response_id) %>%
            mutate(att_check_sum=sum(att_check, na.rm = TRUE)) %>%
            ungroup()
-
-# let's check if it is working
-d_x_yt %>%
- filter(response_id=="R_7Ysx8eYlg1zenst")  
-
-# how many unique users failing att check
-d_x_yt %>%
-  filter(att_check_sum>0) %>%
-  distinct(response_id) %>%
-  nrow()
-
-## check the original att_check dataset
-att_check %>%
-  filter(att_check==1) %>%
-  distinct(response_id) %>%
-  nrow()
-
-# perfect
 
 ## 3 - Merge with id -----
 x <- read_csv("data/x_selected_150_posts.csv")
@@ -182,15 +154,13 @@ responses <- bs_tt_ts %>%
 # Check responses
 responses %>%
   count(response_id) %>%
-  count(n) # 609 participants with 30 responses each
+  count(n) 
 
 ## 2 - identify respondents that failed the attention check -----
 att_check <- responses %>%
   filter(order==10) %>%
   mutate(att_check=ifelse(response=="Left", 0, 1))  %>%
   select(response_id, platform, att_check)
-
-table(att_check$att_check)
 
 # join
 responses <- left_join(responses, att_check)
@@ -205,8 +175,7 @@ responses <- responses %>% select(response_id, order, platform, response, att_ch
 responses %>%
   filter(att_check==1) %>%
   distinct(response_id) %>%
-  nrow() ## 33 participants 
-
+  nrow() 
 ## 3 - get text id
 id <- bs_tt_ts%>%
   select(response_id, contains("tt_pairs"), contains("ts_pairs_")) %>%
@@ -221,17 +190,8 @@ id <- bs_tt_ts%>%
          platform=ifelse(str_detect(name, "tt"), "TikTok", "Truth Social")) %>%
   select(-name, text_id=value)
 
-# Check responses
-id %>%
-  count(response_id) %>%
-  count(n) # 610 participants with 60 responses each
-
 # merge the datasets
 d_tt_ts <- left_join(id, responses, by=c("response_id", "order", "platform", "response"))
-
-# it should have half NA for responses
-d_tt_ts %>%
-  count(binary_response) ## almost perfect
 
 ## examine a single case
 
@@ -250,10 +210,6 @@ d_tt_ts<-d_tt_ts%>%
   group_by(response_id) %>%
   mutate(att_check_sum=sum(att_check, na.rm = TRUE)) %>%
   ungroup()
-
-# let's check if it is working
-d_tt_ts %>%
-  filter(response_id=="R_1DXXnmYnrCZWXNU")  
 
 # how many unique users failing att check
 d_tt_ts %>%

@@ -12,7 +12,7 @@ getwd()
 
 
 # Call packages -----------------------------------------------------------
-pacman::p_load("lme4", "marginaleffects", "sandwich", "lmtest", "clubSandwich")
+pacman::p_load("lme4", "marginaleffects", "sandwich", "lmtest", "clubSandwich", "kableExtra")
 source("code/00_utils.R")
 
 
@@ -49,15 +49,22 @@ bt <- bt %>%
 table(bt$platform)
 table(bt$model)
 
+# stats on table s3
 bt %>% count(platform, model) %>% 
   pivot_wider(names_from = platform, values_from = n) %>% 
-  write_csv("output/tab_s3_post_counts.csv")
+  kable(format = "latex", booktabs = TRUE, 
+        caption = "Final counts of posts by platform and model") %>% 
+  save_table("tab_s3_post_counts.tex")
 
+
+# stats on table s23
 bt %>% group_by(platform, model) %>% 
   summarise(count = n(), mean = mean(normalized_ability), std = sd(normalized_ability), 
             min = min(normalized_ability), max = max(normalized_ability), 
             median = median(normalized_ability), .groups = "drop") %>% 
-  write_csv("output/tab_s23_phi_stats_by_model.csv")
+  kable(format = "latex", booktabs = TRUE, digits = 2, 
+        caption = "PHI scores by platform and model") %>% 
+  save_table("tab_s23_phi_stats_by_model.tex")
 
 # Models ------------------------------------------------------------------
 
@@ -86,7 +93,9 @@ res_predictions = avg_predictions(m_human,
          color = fct_rev(fct_relevel(color, c("Human", "GPT", "Llama"))))
 
 res_predictions %>% select(model, estimate, std.error, lb95, up95) %>% 
-  write_csv("output/tab_s24_phi_marginal_means_pooled.csv")
+  kable(format = "latex", booktabs = TRUE, digits = 3, 
+        caption = "Marginal means of PHI scores by post source, pooled") %>% 
+  save_table("tab_s24_phi_marginal_means_pooled.tex")
 
 # plot combine
 pol = ggplot(res_predictions,
@@ -148,7 +157,9 @@ res_predictions = avg_predictions(m_plat,
          color = fct_rev(fct_relevel(color, c("Human", "GPT", "Llama"))))
 
 res_predictions %>% select(platform, model, estimate, std.error, lb95, up95) %>% 
-  write_csv("output/tab_s24_phi_marginal_means_platform.csv")
+  kable(format = "latex", booktabs = TRUE, digits = 3, 
+        caption = "Marginal means of PHI scores by post source and platform") %>% 
+  save_table("tab_s24_phi_marginal_means_platform.tex")
 
 # plot combine
 platform = ggplot(res_predictions,

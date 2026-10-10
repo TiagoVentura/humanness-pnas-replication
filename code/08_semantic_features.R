@@ -13,7 +13,7 @@ setwd(here::here())
 getwd()
 
 # Call packages -----------------------------------------------------------
-pacman::p_load("lme4", "marginaleffects", "sandwich", "lmtest", "clubSandwich", "wesanderson")
+pacman::p_load("lme4", "marginaleffects", "sandwich", "lmtest", "clubSandwich", "wesanderson", "kableExtra")
 source("code/00_utils.R")
 
 
@@ -350,7 +350,9 @@ bind_rows(df_ai_hum, df_ai_hum %>% mutate(platform = "All")) %>%
   summarise(n = n(), min = min(n_chars_text), max = max(n_chars_text), 
             mean = mean(n_chars_text), median = median(n_chars_text), 
             sd = sd(n_chars_text), .groups = "drop") %>%
-  write_csv("output/tab_s4_post_length.csv")
+  kable(format = "latex", booktabs = TRUE, digits = 1, 
+        caption = "Post length in characters by platform: human vs. AI pooled") %>% 
+  save_table("tab_s4_post_length.tex")
 
 feat_clean <- c("SentimentNegative", "SentimentPositive",
                 "Joy", "Optimism", "Sadness",
@@ -569,7 +571,9 @@ df_mk %>% group_by(platform, source_type) %>%
                          list(mean = ~ round(mean(.x), 2), 
                               pct = ~ round(100 * mean(.x > 0), 0))),
                   n = n(), .groups = "drop") %>%
-  write_csv("output/tab_s5_stylistic_markers.csv")
+  kable(format = "latex", booktabs = TRUE, digits = 2, 
+        caption = "Stylistic markers by platform: human vs. AI pooled (mean per post and percent of posts containing)") %>% 
+  save_table("tab_s5_stylistic_markers.tex")
 
 # 2. Two models: pooled and source-interacted --------------------------------
 

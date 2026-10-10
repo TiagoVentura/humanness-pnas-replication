@@ -1,8 +1,0 @@
-model,TikTok,Truth Social,Twitter/X,YouTube
-gpt_4,75,75,67,75
-gpt_4o,75,72,67,75
-gpt_4o_mini,75,75,66,75
-human,179,161,203,153
-llama2_70b,47,73,56,73
-llama3_2_3b,76,66,74,74
-llama_3.3,73,71,60,75

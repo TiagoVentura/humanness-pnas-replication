@@ -48,8 +48,6 @@ names = colnames(d)
 tibble(names, na) %>%
   arrange(desc(na))
 
-## only social media usage. party id lean is standard because we do not have party id for all
-
 # Merging with Connect ----------------------------------------------------
 
 s1 <- read_csv("data/connect_survey_ts_tt.csv")   %>% mutate(study="ts-tt")
@@ -88,8 +86,6 @@ cn <- cn%>%
 cn %>% tabyl(education_num, education_cat) 
 
 # Age
-table(cn$age)
-
 cn <- cn %>% mutate(
   age_group = case_when(
     age < 25                ~ "<25",
@@ -101,10 +97,8 @@ cn <- cn %>% mutate(
   age_group = factor(age_group, levels = c("<25", "25-44", "45-64", "65+"), ordered = TRUE)
 )
 
-table(cn$age_group)
 
 ## Sex
-table(cn$sex)
 cn <- cn %>%
   mutate(sex = case_when(
       sex %in% c("Male", "Female") ~ sex,
@@ -121,8 +115,6 @@ cn = cn %>%
     
 
 ## ehtnicity
-table(cn$ethnicity)
-table(cn$race)
 cn <- cn %>%
       mutate(hispanic=ifelse(ethnicity=="No, not of Hispanic, Latino, or Spanish origin", 
                              0, 1),
@@ -162,8 +154,6 @@ d = left_join(d, cn)
 
 
 # Pre-Processing ----------------------------------------------------------
-
-colnames(d)
 
 # Trust News
 d<-d %>%

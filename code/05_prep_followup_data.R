@@ -23,7 +23,6 @@ cat("Raw follow-up rows:", nrow(fu_raw), "\n")
 # remove tests
 fu <- fu_raw %>%
   filter(str_detect(participantId, "^[A-Fa-f0-9]{32}$"))
-cat("After hex filter (real respondents):", nrow(fu), "\n")
 
 
 # 2. Rename to short variable names (per codebook) -------------------------
@@ -180,8 +179,6 @@ main_demo <- read_csv(main_path,
 
 clean <- fu %>% 
          left_join(main_demo, by = "participant_id")
-
-# only 1 unmatched row. 
 
 # 6. Keep analysis columns, write -----------------------------------------
 keep_cols <- c("participant_id", "fu_response_id", "main_response_id",
