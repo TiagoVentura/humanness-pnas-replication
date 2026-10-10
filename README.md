@@ -122,10 +122,6 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 - `gpt_detector_sample_gpt-5_all_posts_20260511.csv`: GPT-5 zero-shot judgments for every pair, produced by `11` on 2026-05-11. Input to `12`.
 
-## Items not reproducible from this package
-
-The following SI items were produced outside the pipeline and their code or data is not included: Figure S1 (Botometer score histogram), Figure S11 (TweetEval probability distributions), and Tables S14 and S15 (political lean of human posts, classified with politicalBiasBERT). The script that generated the feature columns in `bt_scores_features/post_traits_*.csv` is also not included; the files are provided as inputs. Tables S8 to S11 (example posts) are illustrative and have no code.
-
 ## Computational Infrastructure
 
 The Python stage was run with Python 3.11.4, pandas 1.5.3, numpy 1.24.3, and statsmodels 0.14.0.
