@@ -97,4 +97,3 @@ modelsummary(mlist, output = out_local, coef_map = cm,
              gof_map = c("nobs"), stars = c('*' = .05, '**' = .01, '***' = .001),
              title = cap, notes = fnote)
 
-cat("\nWrote:\n", out_local, "\n")

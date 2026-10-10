@@ -66,10 +66,6 @@ fu_d <- read_csv("data/followup_ai_clean.csv", show_col_types = FALSE) %>%
 
 
 # --- Marginal effects for every column; relabel for clean modelsummary rows
-# avg_slopes() puts all columns on the same footing: AME on P(correct) for the
-# discernment glmer (logit, as 02b) and the coefficient/contrast for each OLS
-# outcome. Editing `contrast` (+ blanking `term`) gives clean single-column row
-# labels while preserving the marginaleffects class so modelsummary dispatches.
 ord <- c("White (vs Non-White)","Hispanic","Male (vs Female)",
   "Age 25-44 (vs <25)","Age 45-64 (vs <25)","Age 65+ (vs <25)",
   "College (vs No College)","Post-Grad (vs No College)","Republican (vs Democrat)")
@@ -113,9 +109,7 @@ results <- imap_dfr(models, ~ tidy(.x) %>%
             p.value = as.numeric(p.value)))
 write_csv(results, "output/tab_s17.csv")
 
-# Hand-broken into short lines (see datasummary-balance-notes-overflow memory):
-# modelsummary writes one multicolumn row per element of `notes`, so each line
-# stays within the tabular width instead of overflowing.
+# write table
 note <- c(
   "Cells are marginal effects on each outcome.",
   "Discernment = AME on P(correctly identifying AI) from a binomial GLMER (logit),",
@@ -126,8 +120,6 @@ note <- c(
   "Outcome scales differ (discernment 0-1; news & trust z-scored;",
   "AI freq 1-7; timing 1-5; tools 0-8; digital literacy 1-5) - compare within columns.")
 
-cat("Discernment glmer (02b logit): trials =", nobs(mod_disc),
-    "; respondents =", n_distinct(dha$participant_id), "\n\n")
 print(modelsummary(models, shape = contrast ~ model,
                    gof_map = list(list("raw"="nobs","clean"="N","fmt"=0)),
                    stars = c('*'=.05,'**'=.01,'***'=.001), output = "markdown"))
@@ -141,5 +133,3 @@ modelsummary(models, shape = contrast ~ model,
              stars = c('*'=.05,'**'=.01,'***'=.001), escape = FALSE,
              title = cap, notes = note, output = out_local)
 
-cat("\nWrote:\n output/tab_s17.csv\n",
-    out_local, "\n")

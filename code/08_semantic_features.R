@@ -42,8 +42,6 @@ ft3 = ft3 %>%
 
 
 # model
-# Note: n_words dropped (was collinear with n_chars; the joint coefficients
-# captured lexical density rather than length and confused interpretation).
 mod_p <- lm(normalized_ability~ irony +
               offensive + hateful_speech +
               joy +

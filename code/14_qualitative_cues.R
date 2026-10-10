@@ -201,4 +201,6 @@ p_heat <- ggplot(heat_df, aes(x = label_dir, y = label_cue, fill = n)) +
   labs(x = "Direction (A)", y = "Cue 1 (B)", title = "Counts: Cue 1 × Direction") +
   theme_minimal(base_size = 12)
 
+p_heat
+
 ggsave(file.path(out_dir, "fig_s4.png"), p_heat, width = 9, height = 6.5, dpi = 150)

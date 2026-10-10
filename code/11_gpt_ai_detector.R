@@ -16,10 +16,6 @@ PARALLEL_MAX     <- 8         # concurrent in-flight requests
 REASONING_EFFORT <- "minimal"
 SEED             <- 42
 
-# FULL-SAMPLE run: every unique mixed (AI/Human) pair, no stratified subsample.
-# ~7,067 unique pairs x 3 calls = ~21,200 API calls.
-# Estimated wall-clock at PARALLEL_MAX=8: ~45 minutes.
-# Estimated cost at observed gpt-5 token rates: ~$8.
 
 # ---- Packages ---------------------------------------------------------------
 
@@ -40,7 +36,7 @@ OUTPUT_PATH <- here(
 
 # ---- API key ----------------------------------------------------------------
 
-api_key <- Sys.getenv("OPENAI_API_KEY")
+api_key <- "ADD_YOUR_API_KEY"
 
 # ---- Load + filter to mixed AI/Human pairs + stratified sample --------------
 library(tidylog)
