@@ -1,6 +1,11 @@
-
-# utils
-
+##############################################################################
+# File-Name: 00_utils.R
+# author: Tiago Ventura
+# Purpose: Shared ggplot theme, color palettes, confidence-interval helper
+#          and save_function() used by the analysis scripts.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
+##############################################################################
 pacman::p_load(tidyverse, scales,  knitr, srvyr, extrafont, 
                rebus, broom, tidyr, lubridate, here, ggdist, ggtext, ggalt,  janitor, 
                broom, tidyr,  stargazer, janitor)

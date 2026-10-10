@@ -1,14 +1,13 @@
 ##############################################################################
 # File-Name: 08_semantic_features.R
-# Date: 2022
 # author: Tiago Ventura
-# Purpose: Main script to build visualizations for the paper
-# Data in: scores and feature analysis from Rebecca
-# Data out: graphs
-# status:
-# Machine: MacOS High Sierra
+# Purpose: Regressions of PHI scores on sentiment, emotion and civility
+#          features, robustness across classifier families and by post
+#          source, and stylistic markers. Produces Figure 2, SI Figures S2,
+#          S8, S9 and S10, and SI Tables S4 and S5.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 # Set working directory ---------
 setwd(here::here())
 getwd()

@@ -1,15 +1,11 @@
 ##############################################################################
-# File-Name: 02_clean_survey.r
-# Date: 2022
+# File-Name: 02_clean_survey_data.R
 # author: Tiago Ventura
-# Purpose: clean survey data
-# Data in:  raw survey data
-# Data out: survey data processed
-# status:
-# Machine: MacOS High Sierra
+# Purpose: Build the respondent-level survey file (attitudes, news habits,
+#          Connect demographics). Produces data/survey_cleaned.csv.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
-
 # Set working directory ---------
 setwd(here::here())
 getwd()

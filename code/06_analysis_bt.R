@@ -1,14 +1,11 @@
 ##############################################################################
 # File-Name: 06_analysis_bt.R
-# Date: 2022
 # author: Tiago Ventura
-# Purpose: Main script to build visualizations for the paper
-# Data in: scores and feature analysis from Rebecca
-# Data out: graphs
-# status:
-# Machine: MacOS High Sierra
+# Purpose: Marginal means and regressions of PHI scores on post source.
+#          Produces Figure 1 and SI Tables S3, S12, S13, S23 and S24.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 # Set working directory ---------
 setwd(here::here())
 getwd()

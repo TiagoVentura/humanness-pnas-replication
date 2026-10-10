@@ -1,21 +1,12 @@
 ##############################################################################
-# File-Name: follow_up/10_combined_mediators_by_demographics.R
-# Date: 2026
-# Purpose: One wide table of demographic differences across the discernment
-#          outcome and ALL candidate mediators. Columns, in order:
-#            Discernment | Politics | Conspiracy | Cynicism | Trust online |
-#            Trust offline | News online | News offline | AI freq | AI tools |
-#            Adoption timing | Digital literacy
-#          Covariates = Figure-3 demographics with BINARY white + hispanic
-#          (separate), exactly as 02b Model A. Discernment modelled as in
-#          02b_logit.R: trial-level glmer (binomial) + avg_slopes AMEs
-#          (reproduces the published logit estimates). The 7 Model-B covariates
-#          and news are full-sample respondent-level OLS; AI usage + digital
-#          literacy are follow-up respondents.
-# Data in:  data/pairs_survey_clean.csv, data/followup_ai_clean.csv
-# Data out: output/combined_mediators_by_demographics.csv
+# File-Name: 15_combined_mediators_by_demographics.R
+# author: Tiago Ventura
+# Purpose: Demographic differences in discernment and in the candidate
+#          mechanisms measured in the follow-up survey. Produces SI Table
+#          S17.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 setwd(here::here())
 pacman::p_load(tidyverse, lme4, marginaleffects, broom, modelsummary, kableExtra)
 options(modelsummary_factory_latex = "kableExtra",

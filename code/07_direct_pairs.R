@@ -1,12 +1,11 @@
 ##############################################################################
 # File-Name: 07_direct_pairs.R
-# Date: 2026
-# Purpose: Companion to Fig. 1 — proportion of posts classified as AI in
-#          human-vs-AI pairs, by model (left = pooled, right = per-platform).
-# Data in: data/pairs_survey_clean.csv
-# Data out: output/fig_direct_pairs_human_vs_ai.{pdf,png}, fig_direct_pairs_by_model.{pdf,png}, sm_validation_phi.{pdf,png}
+# author: Tiago Ventura
+# Purpose: AI-detection rates in human-AI pairs and validation of PHI scores
+#          against detection. Produces SI Figures S5, S6 and S7.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 # Set working directory ----------------------------------------------------
 setwd(here::here())
 getwd()

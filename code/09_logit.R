@@ -1,14 +1,12 @@
 ##############################################################################
 # File-Name: 09_logit.R
-# Date: 2022
 # author: Tiago Ventura
-# Purpose: run the same models of the paper, but using a logit estimator. 
-# Data in:  
-# Data out:
-# status:
-# Machine: MacOS High Sierra
+# Purpose: Logit models of correct AI identification on respondent
+#          characteristics, and the persona-by-party model. Produces Figures
+#          3 and 4.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 # Set working directory ------------------------------------------------------
 setwd(here::here())
 getwd()

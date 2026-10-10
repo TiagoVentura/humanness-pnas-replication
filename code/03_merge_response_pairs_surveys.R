@@ -1,14 +1,11 @@
 ##############################################################################
-# File-Name: 03_merge_response_pairs_survey.r
-# Date: 2022
+# File-Name: 03_merge_response_pairs_surveys.R
 # author: Tiago Ventura
-# Purpose: merge the datasets with the pairs with the processes survey data
-# Data in:  processed survey + processed pairs
-# Data out: merged datasers
-# status:
-# Machine: MacOS High Sierra
+# Purpose: Merge the pairwise responses with the respondent covariates.
+#          Produces data/pairs_survey_clean.csv, the main analysis dataset.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 # Set working directory ---------
 setwd(here::here())
 getwd()

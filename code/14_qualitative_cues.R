@@ -1,9 +1,12 @@
-# ================================
-# 14_qualitative_cues.R
-# Open-Ended Cue Coding (oe_cues) + Descriptives + Heatmap (Fig S4)
-# ================================
-
-# ---- packages ----
+##############################################################################
+# File-Name: 14_qualitative_cues.R
+# author: Sejin Paik
+# Purpose: Code the open-ended responses on the cues used to judge authorship
+#          and cross-tabulate cue by direction. Produces SI Figure S4 and
+#          output/summary_A_to_E.csv.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
+##############################################################################
 pacman::p_load(readxl, dplyr, stringr, tidyr, tibble, janitor, readr,
                purrr, ggplot2, forcats, rlang, scales)
 

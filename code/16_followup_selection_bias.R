@@ -1,20 +1,11 @@
 ##############################################################################
-# File-Name: follow_up/11_followup_selection_bias.R
-# Date: 2026
-# Purpose: Selection into the follow-up survey. Compares the FULL main-study
-#          sample (all respondents who did the pairwise task) to the subset who
-#          took the follow-up, across every Figure-3 demographic (Panel A) and
-#          attitudinal (Panel B) variable, plus an aggregate AI-discernment
-#          measure (proportion of Human-vs-AI pairs identified correctly).
-#          Categorical demographics are dummy-coded (share of the full sample) so
-#          each level gets a difference + p-value; attitudinal/media measures are
-#          z-scored on the full sample. datasummary_balance reports per-variable
-#          difference + p; a joint orthogonality F-test (follow-up participation
-#          regressed on all variables) goes in the table note.
-# Data in:  data/pairs_survey_clean.csv, data/followup_ai_clean.csv
-# Data out: output/balance_table_followup_selection.tex
+# File-Name: 16_followup_selection_bias.R
+# author: Tiago Ventura
+# Purpose: Selection into the follow-up survey: full main-study sample vs.
+#          follow-up respondents. Produces SI Table S16.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 setwd(here::here())
 pacman::p_load(tidyverse, modelsummary, kableExtra)
 options(modelsummary_factory_latex     = "kableExtra",

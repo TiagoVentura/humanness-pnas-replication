@@ -1,20 +1,11 @@
-# 12_gpt_direct_classifier_figure.R
-#
-# Builds the Human-vs-AI proportion figure from the PAIRWISE GPT detector
-# output produced by 11_gpt_ai_detector.R (file pattern:
-# `gpt_detector_sample_*.csv`, one row per API call). Each call evaluates
-# a pair (post_left, post_right), one of which is AI and one Human, and the
-# model picks "Post A" or "Post B".
-#
-# We pivot the pairwise output to one row per *post* per call:
-#   binary_response = 1 if GPT picked that post as AI, 0 otherwise.
-# Then the same `lm(binary_response ~ source [* platform])` + avg_predictions
-# pattern as the existing paper figures (see 07_direct_pairs.R).
-#
-# Input : data/gpt_detector_sample_<model>_*.csv (most recent)
-# Output: output/fig_direct_pairs_human_vs_ai_gpt5_all_posts.{png,pdf}
-
-# Set working directory ----------------------------------------------------
+##############################################################################
+# File-Name: 12_gpt_direct_classifier_figure.R
+# author: Tiago Ventura
+# Purpose: Detection rates of the GPT-5 benchmark on the same pairs as the
+#          human labels. Produces SI Figure S13.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
+##############################################################################
 setwd(here::here())
 getwd()
 

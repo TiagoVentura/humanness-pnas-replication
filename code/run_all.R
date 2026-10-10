@@ -1,8 +1,12 @@
-# Runs the full R pipeline in order. Run from the package root:
-#   Rscript code/run_all.R
-# 11_gpt_ai_detector.R is not sourced: it calls the OpenAI API, and its output
-# ships in data/gpt_detector_sample_gpt-5_all_posts_20260511.csv.
-
+##############################################################################
+# File-Name: run_all.R
+# author: Tiago Ventura
+# Purpose: Run the full R pipeline in order from the package root (Rscript
+#          code/run_all.R). 11_gpt_ai_detector.R is not sourced: it calls the
+#          OpenAI API and its output ships in data/.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
+##############################################################################
 setwd(here::here())
 pdf(NULL)
 

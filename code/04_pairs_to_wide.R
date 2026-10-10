@@ -1,14 +1,11 @@
 ##############################################################################
-# File-Name: 04_pairs_to_wide.r
-# Date: 2022
+# File-Name: 04_pairs_to_wide.R
 # author: Tiago Ventura
-# Purpose: convert pairs to wide formats
-# Data in:  processed survey + processed pairs
-# Data out: merged datasers
-# status:
-# Machine: MacOS High Sierra
+# Purpose: Convert the pairwise responses to one row per pair. Produces
+#          data/all_pairs_wide_format.csv.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 # Set working directory ---------
 setwd(here::here())
 getwd()

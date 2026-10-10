@@ -1,18 +1,11 @@
 ##############################################################################
 # File-Name: 13_balance_table_demographics.R
-# Date: 2026-05-13
-# Purpose: Produce the Table S19 demographic composition table (Survey 1,
-#          Survey 2, Total, US general population) with
-#          modelsummary::datasummary_balance.
-#
-# Data in :  data/connect_survey_yt_x.csv, data/connect_survey_ts_tt.csv,
-#            data/survey_cleaned.csv, data/pairs_data_yt_x.csv,
-#            data/pairs_data_tt_ts.csv
-# Data out:  output/tab_s13_demographics_with_genpop.{tex,csv}
-#
-# General-population reference values are hard-coded in the gen_pop tribble.
+# author: Tiago Ventura
+# Purpose: Demographic composition of Survey 1, Survey 2 and the US general
+#          population. Produces SI Table S19.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 # Set working directory ---------------------------------------------------
 setwd(here::here())
 getwd()

@@ -1,12 +1,12 @@
 ##############################################################################
-# File-Name: 06_gpt_ai_detector.R
-# Date: 2026
-# Purpose: Generate a version of Fig. 1 but using AI detectos
-# Data in: data/pairs_survey_clean.csv
-# Data out: output/fig_direct_pairs_combined.{pdf,png}
+# File-Name: 11_gpt_ai_detector.R
+# author: Tiago Ventura
+# Purpose: GPT-5 zero-shot detector on every human-AI pair through the OpenAI
+#          API (requires OPENAI_API_KEY; not run by run_all.R). Produces
+#          data/gpt_detector_sample_*.csv.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
-
 # ---- Config -----------------------------------------------------------------
 
 MODEL            <- "gpt-5"

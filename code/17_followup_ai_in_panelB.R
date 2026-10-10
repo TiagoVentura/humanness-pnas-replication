@@ -1,17 +1,11 @@
 ##############################################################################
-# File-Name: follow_up/12_followup_ai_in_panelB.R
-# Date: 2026
-# Purpose: Add AI usage and digital literacy to the Figure-2B (attitudinal /
-#          news-consumption) model of AI discernment. Two columns:
-#            (1) panel-B attitudinal model on the FULL sample
-#                (mirrors 09_logit.R mod_news_on_off_logit);
-#            (2) the same model plus AI usage (frequency, tool breadth, adoption
-#                timing) and digital literacy, on the follow-up subsample.
-#          Outputs a logit (binomial GLMER) regression table.
-# Data in:  data/pairs_survey_clean.csv, data/followup_ai_clean.csv
-# Data out: output/tab_followup_ai_added_panelB.tex
+# File-Name: 17_followup_ai_in_panelB.R
+# author: Tiago Ventura
+# Purpose: Figure 3B attitudinal model with AI usage and digital literacy
+#          added. Produces SI Table S18.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 setwd(here::here())
 pacman::p_load(tidyverse, lme4, modelsummary, kableExtra)
 options(modelsummary_factory_latex     = "kableExtra",

@@ -1,15 +1,13 @@
 ##############################################################################
-# File-Name: 01_clean_text_pairs.r
-# Date: 2022
+# File-Name: 01_clean_text_pairs.R
 # author: Tiago Ventura
-# Purpose: script clean the pairs responses, and marge with the source information about the pairs
-# Data in:  raw survey data
-# Data out: text data + source information
-# status:
-# Machine: MacOS High Sierra
+# Purpose: Reshape the raw Qualtrics exports into one row per respondent,
+#          pair and post; attach post text and source; code the attention
+#          checks. Produces data/pairs_data_yt_x.csv and
+#          data/pairs_data_tt_ts.csv.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
-
 # Set working directory ---------
 setwd(here::here())
 getwd()

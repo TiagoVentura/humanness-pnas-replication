@@ -1,13 +1,11 @@
 ##############################################################################
-# File-Name: 04_analysis_si_kde_platforms.R
-# Date: 2026
-# Purpose: SI Fig. S2 — kernel density estimates of normalized PHI scores
-#          (Bradley-Terry) by LLM model, faceted across the four platforms
-#          (Twitter/X, YouTube, TikTok, Truth Social).
-# Data in: data/bt_scores/bt_{x,yt,tt,ts}_posts_rankings_with_source_persona_inverted.csv
-# Data out: output/fig_si_kde_platforms_{A_clip,B_bounded,C_annotated}.{png,pdf}
+# File-Name: 10_si_kde_platforms.R
+# author: Tiago Ventura
+# Purpose: Kernel densities of normalized PHI scores by model and platform.
+#          Produces SI Figure S3.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
 # Set working directory (repo root) ----------------------------------------
 setwd(here::here())
 getwd()

@@ -1,17 +1,12 @@
 ##############################################################################
-# File-Name: follow_up/01_prep_followup_data.R
-# Date: 2026
-# Purpose: Clean the AI-usage follow-up survey and merge it to the main-study
-#          respondents + demographics. Produces one respondent-level file that
-#          both 06_followup_ai_demographics.R (phases 2-3) and
-#          07_followup_ai_discernment.R (phase 4) read.
-# Data in:  ../follow_up/follow_up_data.csv   (raw Qualtrics export, sibling dir)
-#           data/survey_cleaned.csv           (main study: demographics + ids)
-# Data out: data/followup_ai_clean.csv        (respondent-level, ~690 rows)
-# Notes:   See follow_up/followup_survey_codebook.md for the full codebook.
+# File-Name: 05_prep_followup_data.R
+# author: Tiago Ventura
+# Purpose: Clean the follow-up survey on AI usage and digital literacy and
+#          link it to the main-study respondents. Produces
+#          data/followup_ai_clean.csv.
+# Machine: macOS Sequoia 15.6.1
+# R version 4.5.1
 ##############################################################################
-
-
 # Setup -------------------------------------------------------------------
 setwd(here::here())
 
