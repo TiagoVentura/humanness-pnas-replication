@@ -1,0 +1,40 @@
+\begin{table}
+\centering
+\caption{Demographic differences in discernment and its candidate mediators (marginal effects; ref = White / Female / <25 / No College / Democrat).}
+\centering
+\begin{tabular}[t]{lcccccccccccc}
+\toprule
+  & Discernment & Politics & Conspiracy & Cynicism & Trust online & Trust offline & News online & News offline & AI freq & AI tools & Adoption timing & Digital literacy\\
+\midrule
+White (vs Non-White) & 0.039* & -0.024 & -0.279*** & 0.202* & -0.538*** & -0.299*** & -0.713*** & -0.499*** & -0.441* & -1.014*** & -0.400*** & -0.128\\
+ & (0.016) & (0.081) & (0.082) & (0.082) & (0.079) & (0.080) & (0.076) & (0.082) & (0.191) & (0.227) & (0.108) & (0.106)\\
+Hispanic & -0.009 & -0.125 & 0.155 & -0.158 & 0.034 & -0.238** & 0.187* & -0.047 & 0.297 & 0.082 & 0.033 & 0.147\\
+ & (0.016) & (0.086) & (0.087) & (0.087) & (0.084) & (0.085) & (0.081) & (0.087) & (0.202) & (0.240) & (0.115) & (0.112)\\
+Male (vs Female) & 0.022* & -0.314*** & 0.034 & 0.091 & 0.006 & 0.062 & 0.097 & 0.126* & 0.342** & 0.862*** & 0.218** & 0.467***\\
+ & (0.011) & (0.059) & (0.059) & (0.059) & (0.058) & (0.058) & (0.055) & (0.060) & (0.130) & (0.154) & (0.073) & (0.072)\\
+Age 25-44 (vs <25) & -0.005 & -0.097 & 0.016 & 0.055 & -0.306** & 0.240* & -0.288** & 0.066 & 0.138 & -0.151 & -0.320* & -0.029\\
+ & (0.020) & (0.106) & (0.107) & (0.107) & (0.104) & (0.106) & (0.100) & (0.108) & (0.275) & (0.327) & (0.159) & (0.154)\\
+Age 45-64 (vs <25) & 0.010 & -0.386*** & -0.158 & 0.298** & -0.574*** & 0.329** & -0.614*** & -0.041 & 0.352 & -0.130 & -0.301 & -0.368*\\
+ & (0.021) & (0.109) & (0.110) & (0.111) & (0.108) & (0.109) & (0.103) & (0.111) & (0.283) & (0.336) & (0.163) & (0.158)\\
+Age 65+ (vs <25) & -0.016 & -0.545*** & -0.336** & 0.437*** & -0.620*** & 0.477*** & -0.797*** & 0.061 & 0.035 & -0.281 & -0.367* & -0.821***\\
+ & (0.025) & (0.129) & (0.130) & (0.131) & (0.127) & (0.129) & (0.122) & (0.132) & (0.310) & (0.368) & (0.178) & (0.173)\\
+College (vs No College) & 0.005 & -0.238*** & -0.077 & -0.030 & 0.210** & 0.260*** & 0.172** & 0.276*** & -0.074 & 0.255 & 0.096 & 0.066\\
+ & (0.012) & (0.065) & (0.066) & (0.066) & (0.064) & (0.065) & (0.062) & (0.066) & (0.142) & (0.169) & (0.080) & (0.079)\\
+Post-Grad (vs No College) & 0.011 & -0.204* & -0.240** & 0.150 & 0.108 & 0.122 & 0.135 & 0.278*** & 0.314 & 0.470* & 0.137 & 0.069\\
+ & (0.015) & (0.082) & (0.083) & (0.083) & (0.081) & (0.082) & (0.078) & (0.084) & (0.174) & (0.207) & (0.098) & (0.096)\\
+Republican (vs Democrat) & 0.005 & 0.192** & 0.356*** & -0.374*** & -0.177** & -0.399*** & 0.237*** & 0.208*** & 0.189 & 0.598*** & 0.018 & -0.148*\\
+ & (0.011) & (0.061) & (0.061) & (0.061) & (0.060) & (0.061) & (0.057) & (0.062) & (0.135) & (0.160) & (0.076) & (0.075)\\
+\midrule
+N & 15457 & 1103 & 1103 & 1103 & 1103 & 1103 & 1103 & 1103 & 652 & 652 & 625 & 650\\
+\bottomrule
+\multicolumn{13}{l}{\rule{0pt}{1em}* p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\multicolumn{13}{l}{\rule{0pt}{1em}Cells are marginal effects on each outcome.}\\
+\multicolumn{13}{l}{\rule{0pt}{1em}Discernment = AME on P(correctly identifying AI) from a binomial GLMER (logit),}\\
+\multicolumn{13}{l}{\rule{0pt}{1em}trial-level, exactly as 02b_logit.R; N is trials.}\\
+\multicolumn{13}{l}{\rule{0pt}{1em}Politics / conspiracy / cynicism / trust / news are full-sample respondent-level OLS;}\\
+\multicolumn{13}{l}{\rule{0pt}{1em}AI usage and digital literacy are follow-up respondents.}\\
+\multicolumn{13}{l}{\rule{0pt}{1em}Reference: Non-White / Female / under 25 / No College / Democrat.}\\
+\multicolumn{13}{l}{\rule{0pt}{1em}Outcome scales differ (discernment 0-1; news & trust z-scored;}\\
+\multicolumn{13}{l}{\rule{0pt}{1em}AI freq 1-7; timing 1-5; tools 0-8; digital literacy 1-5) - compare within columns.}\\
+\end{tabular}
+\end{table}

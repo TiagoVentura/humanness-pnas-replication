@@ -1,0 +1,25 @@
+\begin{table}
+\centering
+\caption{Regression Models: PHI Scores Differences Between Pooled AI-Generated Posts vs Human Posts}
+\centering
+\begin{tabular}[t]{lccccc}
+\toprule
+  & Pooled & Twitter/X & YouTube & TikTok & Truth Social\\
+\midrule
+Human (Intercept) & 0.120*** & 0.016 & 0.138** & 0.193*** & 0.151***\\
+ & (0.022) & (0.041) & (0.046) & (0.042) & (0.045)\\
+AI-Generated & -0.169*** & -0.024 & -0.185*** & -0.276*** & -0.207***\\
+ & (0.026) & (0.050) & (0.054) & (0.050) & (0.053)\\
+\midrule
+Num.Obs. & 2386 & 593 & 600 & 600 & 593\\
+R2 & 0.018 & 0.000 & 0.019 & 0.048 & 0.025\\
+R2 Adj. & 0.017 & -0.001 & 0.018 & 0.046 & 0.024\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}* p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Each column reports OLS estimates from a separate regression of PHI scores between pooled AI-Generated post}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}versus human posts as the reference category. Coefficients represent the average difference in}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}perceived humanness between AI-Generated posts and human posts. Column 1 pools all}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}platforms; columns 2-5 estimate the model separately for each platform.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Standard errors in parentheses.}\\
+\end{tabular}
+\end{table}

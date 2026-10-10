@@ -1,0 +1,52 @@
+Replication materials for "Humans show limited ability to distinguish
+human-authored and AI-generated political content on social media"
+(Paik, Ventura, Ansell, Bode, Toney-Wails, Singh)
+
+Two licenses apply, by folder.
+
+1. DATA AND DOCUMENTATION (data/, output/, README.md, codebook.md): CC0 1.0
+
+   To the extent possible under law, the authors have waived all copyright
+   and related or neighboring rights to the survey data, Bradley-Terry
+   scores, text-feature labels, generated figures and tables, README and
+   codebook in this package. Full text:
+   https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+   Third-party content. The human-authored posts in data/ (columns such as
+   Text, post, post_left, post_right and the *_selected_*_posts.csv files)
+   were collected from X/Twitter, YouTube, TikTok and Truth Social. The
+   authors claim no rights over that text; it remains the property of its
+   original authors and is subject to the terms of the platforms it was
+   collected from. User handles have been replaced by @USER. The CC0 waiver
+   covers the authors' compilation, annotations and derived variables only.
+   The AI-generated posts were produced by the authors with OpenAI and Meta
+   Llama models and are covered by the waiver.
+
+   Respondent data are de-identified: direct identifiers, IP addresses,
+   geolocation and free-text feedback were removed, and panel identifiers
+   were replaced by hashed keys. Please do not attempt to re-identify
+   participants.
+
+2. CODE (code/, run_all.R, renv.lock, the .Rproj file): MIT License
+
+   Copyright (c) 2026 Sejin Paik, Tiago Ventura, Rebecca Ansell,
+   Leticia Bode, Autumn Toney-Wails, Lisa Singh
+
+   Permission is hereby granted, free of charge, to any person obtaining a
+   copy of this software and associated documentation files (the
+   "Software"), to deal in the Software without restriction, including
+   without limitation the rights to use, copy, modify, merge, publish,
+   distribute, sublicense, and/or sell copies of the Software, and to
+   permit persons to whom the Software is furnished to do so, subject to
+   the following conditions:
+
+   The above copyright notice and this permission notice shall be included
+   in all copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

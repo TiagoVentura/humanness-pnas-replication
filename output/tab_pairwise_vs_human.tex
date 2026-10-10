@@ -1,0 +1,35 @@
+\begin{table}
+\centering
+\caption{Pairwise Differences in PHI Scores Against Human Posts}
+\centering
+\begin{tabular}[t]{lccccc}
+\toprule
+  & Pooled & Twitter/X & YouTube & TikTok & Truth Social\\
+\midrule
+GPT-4 & -0.220*** & 0.012 & -0.310*** & -0.389*** & -0.199**\\
+ & (0.039) & (0.081) & (0.079) & (0.076) & \vphantom{1} (0.074)\\
+GPT-4o & -0.245*** & -0.289*** & -0.214** & -0.279*** & -0.230**\\
+ & (0.039) & (0.081) & (0.079) & (0.076) & (0.075)\\
+GPT-4o Mini & -0.186*** & -0.029 & -0.210** & -0.341*** & -0.176*\\
+ & (0.039) & (0.081) & (0.079) & (0.076) & (0.074)\\
+Llama 2 & -0.395*** & 0.013 & -0.313*** & -0.572*** & -0.693***\\
+ & (0.041) & (0.086) & (0.080) & (0.090) & (0.075)\\
+Llama 3.2 & -0.094* & 0.071 & -0.219** & -0.116 & -0.133\\
+ & (0.039) & (0.078) & (0.079) & (0.076) & (0.077)\\
+Llama 3.3 & 0.105** & 0.082 & 0.155* & -0.064 & 0.207**\\
+ & (0.040) & (0.084) & (0.079) & (0.077) & (0.075)\\
+Human (baseline) & 0.120*** & 0.016 & 0.138** & 0.193*** & 0.151***\\
+ & (0.021) & (0.040) & (0.045) & (0.041) & (0.042)\\
+\midrule
+Num.Obs. & 2386 & 593 & 600 & 600 & 593\\
+R2 & 0.065 & 0.032 & 0.076 & 0.100 & 0.176\\
+R2 Adj. & 0.063 & 0.022 & 0.066 & 0.091 & 0.168\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}* p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Each column reports OLS estimates from a separate regression of PHI scores on post source,}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}with human posts as the reference category. Coefficients represent the average difference in}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}perceived humanness between posts from a given model and human posts. Column 1 pools all}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}platforms; columns 2--5 estimate the model separately for each platform.}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Standard errors in parentheses.}\\
+\end{tabular}
+\end{table}

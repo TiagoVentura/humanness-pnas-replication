@@ -1,0 +1,30 @@
+variable,code,label,n,pct
+A_direction,3,Unclear,678,55.9%
+A_direction,1,AI,399,32.9%
+A_direction,2,Human,135,11.1%
+B_cue1,9,Other,342,28.2%
+B_cue1,2,Grammar,337,27.8%
+B_cue1,3,Emojis/hashtags/symbols,263,21.7%
+B_cue1,5,Emotional language,112,9.2%
+B_cue1,4,Slang/abbreviations,45,3.7%
+B_cue1,1,Length of post,40,3.3%
+B_cue1,7,Content depth/specificity,40,3.3%
+B_cue1,8,Logic/coherence,22,1.8%
+B_cue1,6,Ideological stance,11,0.9%
+C_cue2,0,None (no secondary cue),876,72.3%
+C_cue2,3,Emojis/hashtags/symbols,125,10.3%
+C_cue2,7,Content depth/specificity,51,4.2%
+C_cue2,4,Slang/abbreviations,50,4.1%
+C_cue2,5,Emotional language,50,4.1%
+C_cue2,8,Logic/coherence,28,2.3%
+C_cue2,6,Ideological stance,20,1.7%
+C_cue2,2,Grammar,12,1.0%
+D_subflag,0,None,1096,90.4%
+D_subflag,5,Gut feeling,73,6.0%
+D_subflag,1,Link presence,26,2.1%
+D_subflag,3,AI refusal,9,0.7%
+D_subflag,4,Platform norm comment,5,0.4%
+D_subflag,2,Profanity,3,0.2%
+E_confidence,2,Medium,538,44.4%
+E_confidence,3,High,529,43.6%
+E_confidence,1,Low,145,12.0%

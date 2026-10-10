@@ -1,0 +1,9 @@
+platform,source_type,n_hashtags_mean,n_hashtags_pct,is_retweet_mean,is_retweet_pct,n_mentions_mean,n_mentions_pct,n_urls_mean,n_urls_pct,n
+TikTok,AI,0.5,37,0,0,0,0,0,0,421
+TikTok,Human,0.31,14,0,0,0.16,16,0,0,179
+Truth Social,AI,1.09,88,0.14,14,0.22,20,0.16,16,432
+Truth Social,Human,2.17,98,0.09,9,0.34,24,0.34,34,161
+Twitter/X,AI,1.26,98,0.14,14,0.26,24,0.01,1,390
+Twitter/X,Human,2.07,97,0.22,22,0.43,36,0.61,56,203
+YouTube,AI,0.4,22,0,0,0.01,1,0,0,447
+YouTube,Human,0.05,1,0,0,0.02,2,0,0,153

@@ -1,0 +1,92 @@
+TWEETEVAL MODEL COMPARISON — DATASET DOCUMENTATION
+====================================================
+
+Three output CSVs, one per model family. All share identical structure.
+
+FILES
+-----
+  labels_tweeteval.csv   — Cardiff NLP RoBERTa models; labels read from pre-computed
+                           post_traits_*.csv files (no re-inference).
+  labels_tweetnlp.csv    — Cardiff NLP latest models via the tweetnlp package
+                           (fresh inference).
+  labels_bertweet.csv    — BERTweet-architecture models (finiteautomata + Cardiff NLP)
+                           via HuggingFace pipeline (fresh inference).
+
+Source posts pooled from four platforms: Truth Social, TikTok, Twitter/X, YouTube.
+
+
+COLUMNS
+-------
+  Text_ID               Integer post identifier from the original dataset.
+  Text                  Raw post text.
+  Normalized Ability    Continuous humanness score (z-scored); higher = more human-like.
+  platform              Platform the post was collected from.
+  source                Data collection source (may be blank).
+  persona               Persona label if the post was AI-generated (may be blank).
+  model                 'human' for human posts; model name for AI-generated posts.
+
+  --- Binary label columns (int, 0 or 1) ---
+  Sentiment - Negative  1 if the post's dominant sentiment is negative.
+  Sentiment - Positive  1 if the post's dominant sentiment is positive.
+                        (Neutral posts are 0 on both.)
+  Joy                   1 if dominant emotion is joy.
+  Optimism              1 if dominant emotion is optimism.
+  Anger                 1 if dominant emotion is anger.
+  Sadness               1 if dominant emotion is sadness.
+                        (Emotion is single-label; exactly one of the four is 1.)
+  Hateful Speech        1 if classified as hate speech.
+  Irony                 1 if classified as ironic.
+  Offensive             1 if classified as offensive.
+
+  --- Probability score columns (float, 0–1) ---
+  prob_<feature>        Model's softmax probability for the positive class of each
+                        feature above. E.g. prob_Joy is P(joy), prob_Hateful Speech
+                        is P(hate). For sentiment, prob_Sentiment - Negative is
+                        P(negative) and prob_Sentiment - Positive is P(positive).
+
+
+MODEL DETAILS & LABEL MAPPINGS
+-------------------------------
+TweetEval (labels_tweeteval.csv)
+  Sentiment:     cardiffnlp/twitter-roberta-base-sentiment
+                 LABEL_0 → negative, LABEL_1 → neutral, LABEL_2 → positive
+  Emotion:       cardiffnlp/twitter-roberta-base-emotion (single-label)
+                 Labels: joy, optimism, anger, sadness
+  Hate:          cardiffnlp/twitter-roberta-base-hate
+                 Labels: hate / non-hate
+  Irony:         cardiffnlp/twitter-roberta-base-irony
+                 Labels: irony / non_irony
+  Offensive:     cardiffnlp/twitter-roberta-base-offensive
+                 Labels: offensive / non-offensive
+  Probabilities: sourced directly from pre-computed probability columns in the
+                 post_traits_*.csv files.
+
+TweetNLP (labels_tweetnlp.csv)
+  All tasks use Cardiff NLP latest models via tweetnlp.load_model().
+  Sentiment:     cardiffnlp/twitter-roberta-base-sentiment-latest
+                 Labels: negative / neutral / positive
+  Emotion:       cardiffnlp/twitter-roberta-base-emotion (single-label, multi_label=False)
+                 Labels: joy, optimism, anger, sadness
+  Hate:          cardiffnlp/twitter-roberta-base-hate-latest
+                 Labels: HATE / NOT-HATE
+  Irony:         cardiffnlp/twitter-roberta-base-irony
+                 Labels: irony / non_irony
+  Offensive:     cardiffnlp/twitter-roberta-base-offensive
+                 Labels: offensive / non-offensive
+  Probabilities: returned by model.predict(..., return_probability=True).
+
+BERTweet (labels_bertweet.csv)
+  Sentiment:     finiteautomata/bertweet-base-sentiment-analysis
+                 Labels: NEG / NEU / POS
+  Emotion:       cardiffnlp/bertweet-base-emotion (single-label, 4-class)
+                 LABEL_0 → joy, LABEL_1 → optimism,
+                 LABEL_2 → anger, LABEL_3 → sadness
+                 (Verified empirically from high-confidence TweetEval posts;
+                 generic LABEL_* names in model config.)
+  Hate:          cardiffnlp/bertweet-base-hate
+                 LABEL_0 → non-hate, LABEL_1 → hate
+  Irony:         cardiffnlp/bertweet-base-irony
+                 LABEL_0 → non-irony, LABEL_1 → irony
+  Offensive:     cardiffnlp/bertweet-base-offensive
+                 LABEL_0 → non-offensive, LABEL_1 → offensive
+  Probabilities: returned by HuggingFace pipeline with top_k=None (all class scores).
