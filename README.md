@@ -202,3 +202,7 @@ loaded via a namespace (and not attached):
 [73] farver_2.1.2          htmltools_0.5.8.1     lifecycle_1.0.4      
 [76] httr_1.4.7            gridtext_0.1.5        MASS_7.3-65          
 ```
+
+## AI Disclosure
+
+This replication package was assembled with the help of Claude (Anthropic), used through the Claude Code command-line tool. The assistant helped inventory the figures and tables in the article and SI Appendix, trace each one to its producing script, reorganize and renumber the analysis scripts, remove personal identifiers from the survey data, and draft this README and the codebook. All analysis code was written by the authors for the original study; the assistant's edits to that code were limited to file paths, the removal of outputs not in the paper, and comments. Every figure and table produced by the package was checked by the authors against the published versions. This disclosure covers the replication materials only, not the research or the article.
