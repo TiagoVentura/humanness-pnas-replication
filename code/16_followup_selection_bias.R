@@ -120,4 +120,8 @@ datasummary_balance(~ Sample, data = bal, fmt = 2,
                     title  = caption,
                     notes  = fnote,
                     output = out_local)
+
+readLines(out_local) %>%
+  str_replace_all(" \\(N=\\d+\\)", "") %>%
+  writeLines(out_local)
 cat("\nWrote", out_local, "\n")
