@@ -51,14 +51,6 @@ pip install pandas numpy statsmodels tabulate
 * Outputs CSVs with normalized scores per post.
 
 
-* Extracts semantic, stylistic, and sentiment features using **TweetEval via tweetnlp**.
-* Runs standardized OLS regressions predicting humanness scores for each platform separately.
-* Saves:
-
-  * Per-dataset regression results CSVs (`regression_results_x.csv`, `regression_results_yt.csv`)
-  * Corresponding coefficient plots in `figures/`
-* **Purpose:** Identify which linguistic and stylistic features are most predictive of perceived humanness for X vs. YouTube.
-
 ---
 
 ## Notes

@@ -59,19 +59,6 @@ TweetEval (labels_tweeteval.csv)
   Probabilities: sourced directly from pre-computed probability columns in the
                  post_traits_*.csv files.
 
-TweetNLP (labels_tweetnlp.csv)
-  All tasks use Cardiff NLP latest models via tweetnlp.load_model().
-  Sentiment:     cardiffnlp/twitter-roberta-base-sentiment-latest
-                 Labels: negative / neutral / positive
-  Emotion:       cardiffnlp/twitter-roberta-base-emotion (single-label, multi_label=False)
-                 Labels: joy, optimism, anger, sadness
-  Hate:          cardiffnlp/twitter-roberta-base-hate-latest
-                 Labels: HATE / NOT-HATE
-  Irony:         cardiffnlp/twitter-roberta-base-irony
-                 Labels: irony / non_irony
-  Offensive:     cardiffnlp/twitter-roberta-base-offensive
-                 Labels: offensive / non-offensive
-  Probabilities: returned by model.predict(..., return_probability=True).
 
 BERTweet (labels_bertweet.csv)
   Sentiment:     finiteautomata/bertweet-base-sentiment-analysis
