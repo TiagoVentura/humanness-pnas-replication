@@ -116,7 +116,7 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 - `bt_scores/bt_{x,yt,tt,ts}_posts_rankings_with_source_persona_inverted.csv`: Bradley-Terry ability and normalized PHI score for every post, with source, persona, and model. Produced by `code/python/*/2_bradley_terry.ipynb`; input to `06`, `07`, and `10`.
 
-- `bt_scores_features/post_traits_{x,yt,tt,ts}.csv`: the BT scores joined with lexical measures (character, word, sentence, exclamation and capitalization counts, type-token ratio) and Cardiff TweetEval (RoBERTa) sentiment, emotion, hate, irony, and offensiveness labels and probabilities. Six readability and lexicon-sentiment columns in the header (Flesch, SMOG, VADER, TextBlob) are empty and unused. The script that generated the feature columns is not included; the files are provided as inputs. Input to `08`.
+- `bt_scores_features/post_traits_{x,yt,tt,ts}.csv`: the BT scores joined with lexical measures (character, word, sentence, exclamation and capitalization counts, type-token ratio) and Cardiff TweetEval (RoBERTa) sentiment, emotion, hate, irony, and offensiveness labels and probabilities. Six readability and lexicon-sentiment columns in the header (Flesch, SMOG, VADER, TextBlob) are empty and unused. Input to `08`.
 
 - `tweeteval_eval/labels_tweeteval.csv`, `labels_bertweet.csv`: binary labels and probabilities from the TweetEval and BERTweet classifier families for all 2,386 posts. Produced by `code/python/tweeteval_eval/build_feature_labels.py`; input to `08`.
 
