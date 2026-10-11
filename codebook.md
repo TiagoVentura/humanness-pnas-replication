@@ -168,7 +168,7 @@ One row per post, same rows and order as the matching BT file above, with text f
 
 ## 7. `tweeteval_eval/labels_tweeteval.csv` and `labels_bertweet.csv`
 
-One row per post, all four platforms pooled (2,386 rows, 25 columns). Produced by `code/python/tweeteval_eval/comparing_eval_models.py`; full model and label-mapping details are in `code/python/tweeteval_eval/datasets.txt`.
+One row per post, all four platforms pooled (2,386 rows, 25 columns). Produced by `code/python/tweeteval_eval/build_feature_labels.py`; full model and label-mapping details are in `code/python/tweeteval_eval/datasets.txt`.
 
 | Variable | Type | Values / range | Description |
 |---|---|---|---|

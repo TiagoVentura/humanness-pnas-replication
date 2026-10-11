@@ -8,14 +8,12 @@ This folder contains scripts for processing and analyzing perceived humanness da
 
 ```
 x_yt_analysis/
-├── data/                                # Input data files for X and YouTube
-│   ├── figures/                         # Regression plots and visualizations
-│   ├── regression_results_x.csv         # Per-feature regression results for X Posts
-│   ├── regression_results_yt.csv        # Per-feature regression results for YouTube Comments
-│   ├── 0_attn_check.ipynb                # Removes attention check failures
-│   ├── 1_data_loading.ipynb        # Loads and formats cleaned datasets
-│   ├── 2_bradley_terry.ipynb       # Computes Bradley–Terry humanness scores
-└── README.md
+├── 0_attn_check.ipynb        # Scores the attention checks, writes failed_attn_ids.csv
+├── 1_data_loading.ipynb      # Reshapes the export into winner/loser pairs per platform
+├── 2_bradley_terry.ipynb     # Fits the Bradley-Terry model, merges metadata, inverts scores
+├── data/                     # Intermediate files and the bt_*_posts_rankings*.csv outputs
+├── VALUES-humanness_march_2025_YT_X_March 13, 2025_11.13.csv   # Qualtrics export (de-identified)
+└── readme.md
 ```
 
 ---

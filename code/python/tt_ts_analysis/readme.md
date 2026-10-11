@@ -8,16 +8,12 @@ This folder contains the full analysis workflow for the TikTok (TT) and Truth So
 
 ```
 tt_ts_analysis/
-├── data/                                # Input datasets for TikTok (TT) and Truth Social (TS)
-│   ├── figures/                         # Per-dataset coefficient plots
-│   │   ├── regression_results_tt.csv    # Regression coefficients for TT
-│   │   ├── regression_results_ts.csv    # Regression coefficients for TS
-│   │   ├── <plots>.png                   # Generated coefficient plots
-├── 0_attn_check.ipynb                   # Quality check for attention-check filtering
-├── 1_data_loading.ipynb                 # Loads cleaned TT and TS data for analysis
-├── 2_bradley_terry.ipynb                 # Applies Bradley-Terry model to compute humanness scores
-├── readme.md                            # This file
-├── VALUES-humanness_judgements.csv      # Reference data for humanness judgement labels
+├── 0_attn_check.ipynb        # Scores the attention checks, writes failed_attn_ids.csv
+├── 1_data_loading.ipynb      # Reshapes the export into winner/loser pairs per platform
+├── 2_bradley_terry.ipynb     # Fits the Bradley-Terry model, merges metadata, inverts scores
+├── data/                     # Intermediate files and the bt_*_posts_rankings*.csv outputs
+├── VALUES-humanness_june_2025_TS_TT_July 14, 2025_17.06.csv    # Qualtrics export (de-identified)
+└── readme.md
 ```
 
 ---

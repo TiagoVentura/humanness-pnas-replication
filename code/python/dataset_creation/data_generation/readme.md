@@ -19,8 +19,8 @@ This directory contains scripts to generate synthetic social media posts and com
 
 * **YouTube (YT)**
 
-  * `ypost_gpt.py` (OpenAI GPT)
-  * `ypost_llama.py` (LLaMA via Ollama)
+  * `ytpost_gpt.py` (OpenAI GPT)
+  * `ytpost_llama.py` (LLaMA via Ollama)
 
 ---
 
@@ -43,10 +43,10 @@ data_generation/
 ├── ttpost_llama.py
 ├── xpost_gpt.py
 ├── xpost_llama.py
-├── ypost_gpt.py
-├── ypost_llama.py
+├── ytpost_gpt.py
+├── ytpost_llama.py
 ├── requirements.txt
-└── README.md
+└── readme.md
 ```
 
 ---
@@ -141,7 +141,7 @@ python xpost_gpt.py \
 #### YouTube (GPT)
 
 ```bash
-python ypost_gpt.py \
+python ytpost_gpt.py \
   -p ./data/political_prompt_personas.csv \
   -y ./data/yt_transcripts \
   -n 20 \
@@ -202,7 +202,7 @@ python xpost_llama.py \
 #### YouTube (LLama)
 
 ```bash
-python ypost_llama.py \
+python ytpost_llama.py \
   -p ./data/political_prompt_personas.csv \
   -y ./data/yt_transcripts \
   -n 20
@@ -246,9 +246,5 @@ Each CSV contains at least:
 * LLaMA scripts rely on your local Ollama server; no API key is needed.
 
 * Adjust the `MODEL` constants in each script to switch back-ends or model sizes.
-
-* GPT scripts include a 90s sleep between personas to respect rate limits.
-
-* LLaMA scripts rely on your local Ollama server; no API key is needed.
 
 * Adjust the \`MODEL\` constants in each script to switch between models.

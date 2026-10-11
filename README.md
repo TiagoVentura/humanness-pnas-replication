@@ -80,7 +80,7 @@ Two steps are not part of `run_all.R`: `11_gpt_ai_detector.R` calls the OpenAI A
 
 ### Python (`code/python/`)
 
-- `x_yt_analysis/` and `tt_ts_analysis/`: the Bradley-Terry pipeline for each survey wave. `0_attn_check.ipynb` filters attention-check failures from the Qualtrics export and writes `data/attention_checks_analysis.csv` (Table S7); `1_data_loading.ipynb` reshapes the pairwise judgments into winner/loser pairs; `2_bradley_terry.ipynb` fits the Bradley-Terry model (statsmodels, binomial GLM), merges post metadata, and writes the `bt_*_posts_rankings_with_source_persona_inverted.csv` files that the R scripts read from `data/bt_scores/`. Run the notebooks in numerical order from inside each folder; the Qualtrics exports and all intermediate files are included.
+- `x_yt_analysis/` and `tt_ts_analysis/`: the Bradley-Terry pipeline for each survey wave. `0_attn_check.ipynb` filters attention-check failures from the Qualtrics export and writes `data/attention_checks_analysis.csv` (Table S7); `1_data_loading.ipynb` reshapes the pairwise judgments into winner/loser pairs; `2_bradley_terry.ipynb` fits the Bradley-Terry model (statsmodels, binomial GLM), merges post metadata, and writes the `bt_*_posts_rankings_with_source_persona_inverted.csv` files to the folder's own `data/` subfolder; copies of those four files sit in `data/bt_scores/`, where the R scripts read them. Run the notebooks in numerical order from inside each folder; the Qualtrics exports and all intermediate files are included.
 
 - `demographic_analysis/`: `attitudes.ipynb` and `dems.ipynb` compute the survey descriptives in Tables S20, S21, and S22 and the demographic counts used by Table S19. Run from inside the folder; they read from `data/` and write to `output/`.
 
@@ -94,7 +94,7 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 - `raw_yt_x_survey.csv`, `raw_tt_ts_survey.csv`: Qualtrics exports of Survey 1 (X/Twitter and YouTube) and Survey 2 (Truth Social and TikTok) with labelled responses, one row per respondent. `raw_yt_x_survey_num.csv` and `raw_tt_ts_survey_num.csv` are the same exports with numeric response codes. Inputs to `01` and `02`.
 
-- `connect_survey_yt_x.csv`, `connect_survey_ts_tt.csv`: CloudResearch Connect demographic profiles for the participants of each survey. Input to `02`, `09`, and `13`.
+- `connect_survey_yt_x.csv`, `connect_survey_ts_tt.csv`: CloudResearch Connect demographic profiles for the participants of each survey. Input to `02` and `13`, and to `dems.ipynb`.
 
 - `x_selected_150_posts.csv`, `yt_selected_150_posts.csv`, `tt_selected_600_posts.csv`, `ts_selected_600_posts.csv`: the stimulus posts shown in the surveys, with source and persona. Input to `01`.
 
@@ -116,15 +116,15 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 - `bt_scores/bt_{x,yt,tt,ts}_posts_rankings_with_source_persona_inverted.csv`: Bradley-Terry ability and normalized PHI score for every post, with source, persona, and model. Produced by `code/python/*/2_bradley_terry.ipynb`; input to `06`, `07`, and `10`.
 
-- `bt_scores_features/post_traits_{x,yt,tt,ts}.csv`: the BT scores joined with lexical measures (character, word, sentence, exclamation and capitalization counts, type-token ratio) and Cardiff TweetEval (RoBERTa) sentiment, emotion, hate, irony, and offensiveness labels and probabilities. Six readability and lexicon-sentiment columns in the header (Flesch, SMOG, VADER, TextBlob) are empty and unused. Input to `08`.
+- `bt_scores_features/post_traits_{x,yt,tt,ts}.csv`: the BT scores joined with lexical measures (character, word, sentence, exclamation and capitalization counts, type-token ratio) and Cardiff TweetEval (RoBERTa) sentiment, emotion, hate, irony, and offensiveness labels and probabilities. Six readability and lexicon-sentiment columns in the header (Flesch, SMOG, VADER, TextBlob) are empty and unused. The script that generated the feature columns is not included; the files are provided as inputs. Input to `08`.
 
-- `tweeteval_eval/labels_tweeteval.csv`, `labels_bertweet.csv`: binary labels and probabilities from the TweetEval and BERTweet classifier families for all 2,386 posts. Produced by `code/python/tweeteval_eval/comparing_eval_models.py`; input to `08`.
+- `tweeteval_eval/labels_tweeteval.csv`, `labels_bertweet.csv`: binary labels and probabilities from the TweetEval and BERTweet classifier families for all 2,386 posts. Produced by `code/python/tweeteval_eval/build_feature_labels.py`; input to `08`.
 
 - `gpt_detector_sample_gpt-5_all_posts_20260511.csv`: GPT-5 zero-shot judgments for every pair, produced by `11` on 2026-05-11. Input to `12`.
 
 ## Computational Infrastructure
 
-The Python stage was run with Python 3.11.4, pandas 1.5.3, numpy 1.24.3, and statsmodels 0.14.0.
+The Python stage was run with Python 3.11.4, pandas 1.5.3, numpy 1.24.3, statsmodels 0.14.0, and tabulate; the BERTweet step in `build_feature_labels.py` also needs transformers 4.37.2 and torch.
 
 To ensure reproducibility, here is the output of `sessionInfo()` with every package used by the R scripts loaded, at the time this project was last run:
 
@@ -151,8 +151,8 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] RColorBrewer_1.1-3        estimatr_1.0.6           
- [3] digest_0.6.37             readxl_1.4.5             
+ [1] qualtRics_3.2.1           RColorBrewer_1.1-3       
+ [3] estimatr_1.0.6            readxl_1.4.5             
  [5] jsonlite_2.0.0            httr2_1.1.2              
  [7] glue_1.8.0                quanteda.textstats_0.97.2
  [9] quanteda_4.3.0            wesanderson_0.3.7        
@@ -186,23 +186,24 @@ loaded via a namespace (and not attached):
 [25] estimability_1.5.1    cellranger_1.1.0      nsyllable_1.0.1      
 [28] Rcpp_1.1.0            clisymbols_1.2.0      pacman_0.5.1         
 [31] splines_4.5.1         timechange_0.3.0      tidyselect_1.2.1     
-[34] rstudioapi_0.18.0     lattice_0.22-7        rebus.datetimes_0.0-2
-[37] withr_3.0.2           coda_0.19-4.1         evaluate_1.0.4       
-[40] survival_3.8-3        survey_4.4-2          rebus.numbers_0.0-1  
-[43] xml2_1.3.8            texreg_1.39.4         pillar_1.11.0        
-[46] KernSmooth_2.23-26    reformulas_0.4.1      distributional_0.5.0 
-[49] generics_0.1.4        rprojroot_2.0.4       hms_1.1.3            
-[52] minqa_1.2.8           xtable_1.8-4          emmeans_1.11.2       
-[55] tools_4.5.1           data.table_1.17.8     mvtnorm_1.3-3        
-[58] fastmatch_1.1-6       grid_4.5.1            mitools_2.4          
-[61] Rttf2pt1_1.3.12       rbibutils_2.3         nlme_3.1-168         
-[64] rebus.unicode_0.0-2   Formula_1.2-5         cli_3.6.5            
-[67] rappdirs_0.3.3        textshaping_1.0.1     proj4_1.0-15         
-[70] viridisLite_0.4.2     svglite_2.2.1         gtable_0.3.6         
-[73] farver_2.1.2          htmltools_0.5.8.1     lifecycle_1.0.4      
-[76] httr_1.4.7            gridtext_0.1.5        MASS_7.3-65          
+[34] rstudioapi_0.18.0     sjlabelled_1.2.0      lattice_0.22-7       
+[37] rebus.datetimes_0.0-2 withr_3.0.2           coda_0.19-4.1        
+[40] evaluate_1.0.4        survival_3.8-3        survey_4.4-2         
+[43] rebus.numbers_0.0-1   xml2_1.3.8            texreg_1.39.4        
+[46] pillar_1.11.0         KernSmooth_2.23-26    insight_1.4.2.1      
+[49] reformulas_0.4.1      distributional_0.5.0  generics_0.1.4       
+[52] rprojroot_2.0.4       hms_1.1.3             minqa_1.2.8          
+[55] xtable_1.8-4          emmeans_1.11.2        tools_4.5.1          
+[58] data.table_1.17.8     mvtnorm_1.3-3         fastmatch_1.1-6      
+[61] grid_4.5.1            mitools_2.4           Rttf2pt1_1.3.12      
+[64] rbibutils_2.3         nlme_3.1-168          rebus.unicode_0.0-2  
+[67] Formula_1.2-5         cli_3.6.5             rappdirs_0.3.3       
+[70] textshaping_1.0.1     proj4_1.0-15          viridisLite_0.4.2    
+[73] svglite_2.2.1         gtable_0.3.6          digest_0.6.37        
+[76] farver_2.1.2          htmltools_0.5.8.1     lifecycle_1.0.4      
+[79] httr_1.4.7            gridtext_0.1.5        MASS_7.3-65          
 ```
 
 ## AI Disclosure
 
-This replication package was assembled with the help of Claude (Anthropic), used through the Claude Code command-line tool. The assistant helped inventory the figures and tables in the article and SI Appendix, trace each one to its producing script, reorganize and renumber the analysis scripts, remove personal identifiers from the survey data, and draft this README and the codebook. All analysis code was written by the authors for the original study; the assistant's edits to that code were limited to file paths, the removal of outputs not in the paper, and comments. Every figure and table produced by the package was checked by the authors against the published versions. This disclosure covers the replication materials only, not the research or the article.
+This replication package was assembled with the help of Claude (Anthropic), used through the Claude Code command-line tool. The assistant helped inventory the figures and tables in the article and SI Appendix, trace each one to its producing script, reorganize and renumber the analysis scripts, remove personal identifiers from the survey data, and draft this README and the codebook. All analysis code was written by the authors for the original study; the assistant's edits to that code were limited to file paths, output file names and formats, the removal of outputs not in the paper, and comments. Every figure and table produced by the package was checked by the authors against the published versions. This disclosure covers the replication materials only, not the research or the article.
