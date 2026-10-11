@@ -10,7 +10,7 @@ This study employs a set of behavioral experiments to examine how individuals pe
 
 This README file provides an overview of the replication materials for the article and its SI Appendix.
 
-The R code used in the article and the SI Appendix can be found in the folder `**code**`. The Python notebooks and scripts that produce the upstream inputs (Bradley-Terry scores, attention checks, survey descriptives, text-feature labels) and the original data-collection and generation code are in `**code/python**`.
+The R code used in the article and the SI Appendix can be found in the folder `**code**`. The Python notebooks and scripts that produce the upstream inputs (Bradley-Terry scores, attention checks, survey descriptives, text-feature labels) are in `**code/python**`.
 
 The datasets for the full replication of the article and the SI Appendix can be found in the folder `**data**`.
 
@@ -86,7 +86,6 @@ Two steps are not part of `run_all.R`: `11_gpt_ai_detector.R` calls the OpenAI A
 
 - `tweeteval_eval/build_feature_labels.py`: builds `data/tweeteval_eval/labels_tweeteval.csv` (TweetEval labels taken from the post-trait files) and `labels_bertweet.csv` (BERTweet classifiers run through HuggingFace). `datasets.txt` documents the columns.
 
-- `dataset_creation/data_generation/`: the scripts that generated the AI posts, one per platform and model family (OpenAI GPT through the API, Llama through Ollama), with the persona system prompts and the debate and video transcripts they used as context. Provided as the protocol for the stimuli; they are not part of the analysis pipeline.
 
 ## Data
 
