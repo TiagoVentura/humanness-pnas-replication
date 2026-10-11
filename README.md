@@ -80,11 +80,11 @@ Two steps are not part of `run_all.R`: `11_gpt_ai_detector.R` calls the OpenAI A
 
 ### Python (`code/python/`)
 
-- `x_yt_analysis/` and `tt_ts_analysis/`: the Bradley-Terry pipeline for each survey wave. `0_attn_check.ipynb` filters attention-check failures from the Qualtrics export and writes `data/attention_checks_analysis.csv` (Table S7); `1_data_loading.ipynb` reshapes the pairwise judgments into winner/loser pairs; `2_bradley_terry.ipynb` fits the Bradley-Terry model (statsmodels, binomial GLM), merges post metadata, and writes the `bt_*_posts_rankings_with_source_persona_inverted.csv` files that the R scripts read from `data/bt_scores/`. Its summary cells print the per-model counts (Table S3) and PHI statistics (Table S23). Run the notebooks in numerical order from inside each folder; the Qualtrics exports and all intermediate files are included.
+- `x_yt_analysis/` and `tt_ts_analysis/`: the Bradley-Terry pipeline for each survey wave. `0_attn_check.ipynb` filters attention-check failures from the Qualtrics export and writes `data/attention_checks_analysis.csv` (Table S7); `1_data_loading.ipynb` reshapes the pairwise judgments into winner/loser pairs; `2_bradley_terry.ipynb` fits the Bradley-Terry model (statsmodels, binomial GLM), merges post metadata, and writes the `bt_*_posts_rankings_with_source_persona_inverted.csv` files that the R scripts read from `data/bt_scores/`. Run the notebooks in numerical order from inside each folder; the Qualtrics exports and all intermediate files are included.
 
 - `demographic_analysis/`: `attitudes.ipynb` and `dems.ipynb` compute the survey descriptives in Tables S20, S21, and S22 and the demographic counts used by Table S19. Run from inside the folder; they read from `data/` and write to `output/`.
 
-- `tweeteval_eval/comparing_eval_models.py`: builds `data/tweeteval_eval/labels_tweeteval.csv` and `labels_bertweet.csv` from the post-trait files, running the BERTweet classifiers through HuggingFace. `datasets.txt` documents the columns.
+- `tweeteval_eval/build_feature_labels.py`: builds `data/tweeteval_eval/labels_tweeteval.csv` (TweetEval labels taken from the post-trait files) and `labels_bertweet.csv` (BERTweet classifiers run through HuggingFace). `datasets.txt` documents the columns.
 
 - `dataset_creation/`: the original collection and cleaning scripts for the human posts (`data_collection/`, one folder per platform) and the LLM generation scripts with the debate and video transcripts they used as context (`data_generation/`). Provided for provenance; the raw platform dumps they read are not included.
 

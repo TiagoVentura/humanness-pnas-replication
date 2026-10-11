@@ -1,14 +1,12 @@
 TWEETEVAL MODEL COMPARISON — DATASET DOCUMENTATION
 ====================================================
 
-Three output CSVs, one per model family. All share identical structure.
+Two output CSVs, one per model family. Both share the same structure.
 
 FILES
 -----
   labels_tweeteval.csv   — Cardiff NLP RoBERTa models; labels read from pre-computed
                            post_traits_*.csv files (no re-inference).
-  labels_tweetnlp.csv    — Cardiff NLP latest models via the tweetnlp package
-                           (fresh inference).
   labels_bertweet.csv    — BERTweet-architecture models (finiteautomata + Cardiff NLP)
                            via HuggingFace pipeline (fresh inference).
 
