@@ -1,4 +1,0 @@
-pandas
-random
-re
-langdetect

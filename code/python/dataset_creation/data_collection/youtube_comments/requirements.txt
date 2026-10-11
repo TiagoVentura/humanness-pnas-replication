@@ -1,4 +1,0 @@
-pandas
-os
-re
-langdetect

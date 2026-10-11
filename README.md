@@ -86,7 +86,7 @@ Two steps are not part of `run_all.R`: `11_gpt_ai_detector.R` calls the OpenAI A
 
 - `tweeteval_eval/build_feature_labels.py`: builds `data/tweeteval_eval/labels_tweeteval.csv` (TweetEval labels taken from the post-trait files) and `labels_bertweet.csv` (BERTweet classifiers run through HuggingFace). `datasets.txt` documents the columns.
 
-- `dataset_creation/`: the original collection and cleaning scripts for the human posts (`data_collection/`, one folder per platform) and the LLM generation scripts with the debate and video transcripts they used as context (`data_generation/`). Provided for provenance; the raw platform dumps they read are not included.
+- `dataset_creation/data_generation/`: the scripts that generated the AI posts, one per platform and model family (OpenAI GPT through the API, Llama through Ollama), with the persona system prompts and the debate and video transcripts they used as context. Provided as the protocol for the stimuli; they are not part of the analysis pipeline.
 
 ## Data
 
