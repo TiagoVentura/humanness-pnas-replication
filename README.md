@@ -20,7 +20,7 @@ We also provide a [codebook](codebook.md) describing the variables in the analys
 
 Data, outputs and documentation are released under CC0 1.0; code under the MIT License. See [LICENSE](LICENSE), which also notes that the human-authored posts remain the property of their original authors.
 
-To reproduce every figure and table from the raw survey exports, open the project in R (the `.Rproj` file sets the working directory) and run
+To reproduce the figures and tables produced in R (Figures 1 to 4, Figures S2 to S10, S12, S13, and Tables S3 to S5, S12, S13, S16 to S19, S23, S24) from the raw survey exports, open the project in R (the `.Rproj` file sets the working directory) and run
 
 ```r
 source("code/run_all.R")
@@ -34,7 +34,9 @@ Rscript code/run_all.R
 
 The script runs the 16 R scripts listed below in order, regenerating the derived datasets (`survey_cleaned.csv`, `pairs_data_*.csv`, `pairs_survey_clean.csv`, `all_pairs_wide_format.csv`, `followup_ai_clean.csv`) and then every figure and table. A full run takes about three minutes on a laptop. Packages are loaded with `pacman::p_load()`, which installs anything missing; an `renv.lock` file records the exact package versions used for the published results (`renv::restore()` recreates that library).
 
-Two steps are not part of `run_all.R`: `11_gpt_ai_detector.R` calls the OpenAI API (about 21,000 calls) and its output ships in `data/`; the Python Bradley-Terry notebooks produce `data/bt_scores/`, which ships ready to use. Both can be re-run as described below.
+The remaining SI items come from the Python notebooks and scripts numbered `18` to `22` in the same folder (Figures S1 and S11, Tables S14, S15, S20, S21, S22). Run each from inside `code/`: `jupyter nbconvert --to notebook --execute <notebook>` for the two notebooks, `python <script>` for the three scripts. Their outputs are also included in `output/`.
+
+Two further steps are not part of the pipeline because they call external services, and their outputs ship in `data/` ready to use: `11_gpt_ai_detector.R` queries the OpenAI API (about 21,000 calls), and the notebooks and script in `code/BT_analysis/` build the Bradley-Terry scores and the text-feature labels. Both can be re-run as described below.
 
 ## Code
 
