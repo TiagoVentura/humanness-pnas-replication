@@ -10,7 +10,7 @@ This study employs a set of behavioral experiments to examine how individuals pe
 
 This README file provides an overview of the replication materials for the article and its SI Appendix.
 
-The R code used in the article and the SI Appendix can be found in the folder `**code**`. The Python notebooks and scripts that produce the upstream inputs (Bradley-Terry scores, attention checks, survey descriptives, text-feature labels) are in `**code/python**`.
+The code used in the article and the SI Appendix can be found in the folder `**code**`: 17 R scripts followed by two Python notebooks and three Python scripts, numbered in run order. The upstream steps that build the package's inputs (Bradley-Terry scores, attention checks, text-feature labels) are in `**code/BT_analysis**`.
 
 The datasets for the full replication of the article and the SI Appendix can be found in the folder `**data**`.
 
@@ -78,16 +78,23 @@ Two steps are not part of `run_all.R`: `11_gpt_ai_detector.R` calls the OpenAI A
 
 - `run_all.R`: sources the scripts above in order.
 
-### Python (`code/python/`)
+### Python notebooks and scripts (`code/`)
 
-- `x_yt_analysis/` and `tt_ts_analysis/`: the Bradley-Terry pipeline for each survey wave. `0_attn_check.ipynb` filters attention-check failures from the Qualtrics export and writes `data/attention_checks_analysis.csv` (Table S7); `1_data_loading.ipynb` reshapes the pairwise judgments into winner/loser pairs; `2_bradley_terry.ipynb` fits the Bradley-Terry model (statsmodels, binomial GLM), merges post metadata, and writes the `bt_*_posts_rankings_with_source_persona_inverted.csv` files to the folder's own `data/` subfolder; copies of those four files sit in `data/bt_scores/`, where the R scripts read them. Run the notebooks in numerical order from inside each folder; the Qualtrics exports and all intermediate files are included.
+- `18_survey_descriptives.ipynb`: tabulates political interest, news trust, news cynicism, and conspiracy items for respondents who completed the pairwise task. Produces Tables S20, S21, and S22 (one CSV per survey wave plus a combined file). Run from inside `code/` with `jupyter nbconvert --execute`.
 
-- `demographic_analysis/`: `attitudes.ipynb` and `dems.ipynb` compute the survey descriptives in Tables S20, S21, and S22 and the demographic counts used by Table S19. Run from inside the folder; they read from `data/` and write to `output/`.
+- `19_demographics.ipynb`: links the Connect demographic profiles to the survey respondents and tabulates age, education, sex, party, race, and income per wave. Produces the `tab_s19_source_*.csv` counts behind Table S19.
 
-- `si_analyses/`: three stand-alone scripts for SI items not produced by the R pipeline. `fig_s11_tweeteval_distribution.py` draws the distribution of TweetEval probability scores by authorship family (Figure S11) from `labels_tweeteval.csv`. `tab_s14_s15_political_lean.py` classifies the human-authored posts with politicalBiasBERT (`bucketresearch/politicalBiasBERT`, HuggingFace), writes the political-lean distribution by platform (Table S14) and the OLS regressions of PHI on political lean (Table S15); the classifier output ships as `data/political_bias.csv`, so the script runs without inference unless called with `--force`. `fig_s1_botometer_histogram.py` draws the Botometer score histogram (Figure S1) from `data/botometer_output.csv`. Run each from inside the folder.
+- `20_fig_s1_botometer.py`: histogram of Botometer scores for the X/Twitter authors. Produces Figure S1 from `data/botometer_output.csv`.
 
-- `tweeteval_eval/build_feature_labels.py`: builds `data/tweeteval_eval/labels_tweeteval.csv` (TweetEval labels taken from the post-trait files) and `labels_bertweet.csv` (BERTweet classifiers run through HuggingFace). `datasets.txt` documents the columns.
+- `21_fig_s11_tweeteval.py`: distribution of TweetEval probability scores by authorship family. Produces Figure S11 from `data/tweeteval_eval/labels_tweeteval.csv`.
 
+- `22_tab_s14_s15_political_lean.py`: classifies the human-authored posts with politicalBiasBERT (`bucketresearch/politicalBiasBERT`, HuggingFace), writes the political-lean distribution by platform (Table S14) and the OLS regressions of PHI on political lean (Table S15). The classifier output ships as `data/political_bias.csv`, so the script runs without inference unless called with `--force`.
+
+### Upstream inputs (`code/BT_analysis/`)
+
+- `x_yt_0_attn_check.ipynb`, `x_yt_1_data_loading.ipynb`, `x_yt_2_bradley_terry.ipynb` and the matching `tt_ts_*` notebooks: the Bradley-Terry pipeline for each survey wave. The first notebook filters attention-check failures from the Qualtrics export and writes `data/<wave>_attention_checks_analysis.csv` (Table S7); the second reshapes the pairwise judgments into winner/loser pairs; the third fits the Bradley-Terry model (statsmodels, binomial GLM), merges post metadata, and writes the `bt_*_posts_rankings_with_source_persona_inverted.csv` files to the folder's `data/` subfolder; copies of those four files sit in `data/bt_scores/`, where the R scripts read them. Run in numerical order from inside the folder; the Qualtrics exports and all intermediate files are included.
+
+- `build_feature_labels.py`: builds `data/tweeteval_eval/labels_tweeteval.csv` (TweetEval labels taken from the post-trait files) and `labels_bertweet.csv` (BERTweet classifiers run through HuggingFace). `labels_columns.txt` documents the columns.
 
 ## Data
 
@@ -95,7 +102,7 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 - `raw_yt_x_survey.csv`, `raw_tt_ts_survey.csv`: Qualtrics exports of Survey 1 (X/Twitter and YouTube) and Survey 2 (Truth Social and TikTok) with labelled responses, one row per respondent. `raw_yt_x_survey_num.csv` and `raw_tt_ts_survey_num.csv` are the same exports with numeric response codes. Inputs to `01` and `02`.
 
-- `connect_survey_yt_x.csv`, `connect_survey_ts_tt.csv`: CloudResearch Connect demographic profiles for the participants of each survey. Input to `02` and `13`, and to `dems.ipynb`.
+- `connect_survey_yt_x.csv`, `connect_survey_ts_tt.csv`: CloudResearch Connect demographic profiles for the participants of each survey. Input to `02`, `13`, and `19`.
 
 - `x_selected_150_posts.csv`, `yt_selected_150_posts.csv`, `tt_selected_600_posts.csv`, `ts_selected_600_posts.csv`: the stimulus posts shown in the surveys, with source and persona. Input to `01`.
 
@@ -115,19 +122,19 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 ### Additional datasets
 
-- `bt_scores/bt_{x,yt,tt,ts}_posts_rankings_with_source_persona_inverted.csv`: Bradley-Terry ability and normalized PHI score for every post, with source, persona, and model. Produced by `code/python/*/2_bradley_terry.ipynb`; input to `06`, `07`, and `10`.
+- `bt_scores/bt_{x,yt,tt,ts}_posts_rankings_with_source_persona_inverted.csv`: Bradley-Terry ability and normalized PHI score for every post, with source, persona, and model. Produced by `code/BT_analysis/*_2_bradley_terry.ipynb`; input to `06`, `07`, and `10`.
 
 - `bt_scores_features/post_traits_{x,yt,tt,ts}.csv`: the BT scores joined with lexical measures (character, word, sentence, exclamation and capitalization counts, type-token ratio) and Cardiff TweetEval (RoBERTa) sentiment, emotion, hate, irony, and offensiveness labels and probabilities. Six readability and lexicon-sentiment columns in the header (Flesch, SMOG, VADER, TextBlob) are empty and unused. Input to `08`.
 
-- `tweeteval_eval/labels_tweeteval.csv`, `labels_bertweet.csv`: binary labels and probabilities from the TweetEval and BERTweet classifier families for all 2,386 posts. Produced by `code/python/tweeteval_eval/build_feature_labels.py`; input to `08`.
+- `tweeteval_eval/labels_tweeteval.csv`, `labels_bertweet.csv`: binary labels and probabilities from the TweetEval and BERTweet classifier families for all 2,386 posts. Produced by `code/BT_analysis/build_feature_labels.py`; input to `08`.
 
 - `gpt_detector_sample_gpt-5_all_posts_20260511.csv`: GPT-5 zero-shot judgments for every pair, produced by `11` on 2026-05-11. Input to `12`.
 
-- `political_bias.csv`: the 696 human-authored posts with politicalBiasBERT class probabilities and the assigned Left/Center/Right label. Produced by `code/python/si_analyses/tab_s14_s15_political_lean.py`; input to the same script for Tables S14 and S15.
+- `political_bias.csv`: the 696 human-authored posts with politicalBiasBERT class probabilities and the assigned Left/Center/Right label. Produced by `code/22_tab_s14_s15_political_lean.py`; input to the same script for Tables S14 and S15.
 
 ## Computational Infrastructure
 
-The Python stage was run with Python 3.11.4, pandas 1.5.3, numpy 1.24.3, statsmodels 0.14.0, and tabulate; the BERTweet step in `build_feature_labels.py` and the politicalBiasBERT step in `tab_s14_s15_political_lean.py` also need transformers 4.37.2 and torch; the SI figure scripts use matplotlib 3.7.1.
+The Python stage was run with Python 3.11.4, pandas 1.5.3, numpy 1.24.3, statsmodels 0.14.0, and tabulate; the BERTweet step in `BT_analysis/build_feature_labels.py` and the politicalBiasBERT step in `22_tab_s14_s15_political_lean.py` also need transformers 4.37.2 and torch; the SI figure scripts use matplotlib 3.7.1.
 
 To ensure reproducibility, here is the output of `sessionInfo()` with every package used by the R scripts loaded, at the time this project was last run:
 

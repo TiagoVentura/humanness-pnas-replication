@@ -115,7 +115,7 @@ One row per follow-up respondent (May 2026 recontact). 724 rows, 49 columns. Out
 
 ## 4. `bt_scores/bt_{x,yt,tt,ts}_posts_rankings_with_source_persona_inverted.csv`
 
-One row per post, one file per platform (x = X/Twitter 593 rows, yt = YouTube 600, tt = TikTok 600, ts = Truth Social 593). Produced by `code/python/*/2_bradley_terry.ipynb` from the pairwise judgements. Same seven columns in each file.
+One row per post, one file per platform (x = X/Twitter 593 rows, yt = YouTube 600, tt = TikTok 600, ts = Truth Social 593). Produced by `code/BT_analysis/*_2_bradley_terry.ipynb` from the pairwise judgements. Same seven columns in each file.
 
 | Variable | Type | Values / range | Description |
 |---|---|---|---|
@@ -168,7 +168,7 @@ One row per post, same rows and order as the matching BT file above, with text f
 
 ## 7. `tweeteval_eval/labels_tweeteval.csv` and `labels_bertweet.csv`
 
-One row per post, all four platforms pooled (2,386 rows, 25 columns). Produced by `code/python/tweeteval_eval/build_feature_labels.py`; full model and label-mapping details are in `code/python/tweeteval_eval/datasets.txt`.
+One row per post, all four platforms pooled (2,386 rows, 25 columns). Produced by `code/BT_analysis/build_feature_labels.py`; full model and label-mapping details are in `code/BT_analysis/.txt`.
 
 | Variable | Type | Values / range | Description |
 |---|---|---|---|
@@ -187,11 +187,11 @@ One row per post, all four platforms pooled (2,386 rows, 25 columns). Produced b
 |---|---|---|
 | `raw_yt_x_survey.csv`, `raw_tt_ts_survey.csv` | Qualtrics exports of Survey 1 and Survey 2 with labelled values (601 and 606 rows). Include the 30 pairwise items per respondent, post texts and IDs for each pair, and the `oe_cues` open-ended answer | `01_clean_text_pairs.R` |
 | `raw_yt_x_survey_num.csv`, `raw_tt_ts_survey_num.csv` | Same exports with numeric codes | `02_clean_survey_data.R` |
-| `connect_survey_yt_x.csv`, `connect_survey_ts_tt.csv` | CloudResearch Connect participant exports (621 and 613 rows): `ParticipantId`, timing, status, and profile demographics (Age, Education, Sex, Political Party, Ethnicity, Race, Household Income, Employment Status, ...). Payment and completion-code columns removed | `02_clean_survey_data.R`, `13_balance_table_demographics.R`, `dems.ipynb` |
+| `connect_survey_yt_x.csv`, `connect_survey_ts_tt.csv` | CloudResearch Connect participant exports (621 and 613 rows): `ParticipantId`, timing, status, and profile demographics (Age, Education, Sex, Political Party, Ethnicity, Race, Household Income, Employment Status, ...). Payment and completion-code columns removed | `02_clean_survey_data.R`, `13_balance_table_demographics.R`, `19_demographics.ipynb` |
 | `survey_followup2.csv` | Qualtrics export of the May 2026 follow-up survey (three-row Qualtrics header, 740 data rows, raw item names such as `AI-freq`, `digital-lit_1`, `participantId`) | `05_prep_followup_data.R` |
 | `x_selected_150_posts.csv`, `yt_selected_150_posts.csv`, `tt_selected_600_posts.csv`, `ts_selected_600_posts.csv` | Stimulus pools (about 600 posts each): `id`, `rt`, `source`, `persona`, `post`, `nchar` | `01_clean_text_pairs.R` |
 | `OE_Humanness.xlsx` | Open-ended cue responses (`ResponseId`, `oe_cues`, six `oe_multiple` ratings, correctness flag) in three sheets: `All` (1,212), `ytx`, `ttts`. Feedback column blanked | `14_qualitative_cues.R` |
-| `political_bias.csv` | Human-authored posts (696 rows) with the `labels_tweeteval.csv` columns plus `prob_Left`, `prob_Center`, `prob_Right` (politicalBiasBERT class probabilities) and `political_label` (argmax) | `code/python/si_analyses/tab_s14_s15_political_lean.py` |
+| `political_bias.csv` | Human-authored posts (696 rows) with the `labels_tweeteval.csv` columns plus `prob_Left`, `prob_Center`, `prob_Right` (politicalBiasBERT class probabilities) and `political_label` (argmax) | `code/22_tab_s14_s15_political_lean.py` |
 | `gpt_detector_sample_gpt-5_all_posts_20260511.csv` | Output of the GPT-5 zero-shot detector run of 2026-05-11 (21,201 pair-level API calls): pair identifiers and texts, model settings, raw and parsed answers, token counts | `12_gpt_direct_classifier_figure.R` |
 
-Inputs for the Python stage (raw Qualtrics `VALUES-*.csv` exports with PII removed, post metadata, winner/loser pair files and BT intermediates) sit next to the notebooks under `code/python/x_yt_analysis/` and `code/python/tt_ts_analysis/`.
+Inputs for the Bradley-Terry stage (raw Qualtrics `VALUES-*.csv` exports with PII removed, post metadata, winner/loser pair files and BT intermediates) sit next to the notebooks under `code/BT_analysis/` and `code/BT_analysis/`.
