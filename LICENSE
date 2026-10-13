@@ -27,7 +27,7 @@ Two licenses apply, by folder.
    were replaced by hashed keys. Please do not attempt to re-identify
    participants.
 
-2. CODE (code/, run_all.R, renv.lock, the .Rproj file): MIT License
+2. CODE (code/, renv.lock, the .Rproj file): MIT License
 
    Copyright (c) 2026 Sejin Paik, Tiago Ventura, Rebecca Ansell,
    Leticia Bode, Autumn Toney-Wails, Lisa Singh
