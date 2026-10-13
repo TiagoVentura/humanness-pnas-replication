@@ -5,7 +5,7 @@
 # bot-like); red dashed line marks the 0.5 exclusion threshold.
 #
 # Data: data/botometer_output.csv
-#   columns: bot_score, timestamp, user_id, username
+#   columns: bot_score, timestamp
 #
 # Run from this folder:  python 20_fig_s1_botometer.py
 
@@ -26,17 +26,17 @@ def main():
     df = df.dropna(subset=['bot_score'])
     print(f"Authors: {len(df)}  |  above threshold: {(df['bot_score'] >= 0.5).sum()}")
 
-    bins = [i / 20 for i in range(21)]  # 0.05-width bins
+    bins = [i / 10 for i in range(11)]  # 0.1-width bins
 
-    fig, ax = plt.subplots(figsize=(7, 4))
+    fig, ax = plt.subplots(figsize=(7, 3.5))
     ax.hist(df['bot_score'], bins=bins,
             color='skyblue', edgecolor='black', alpha=0.8)
     ax.axvline(0.5, color='red', linestyle='--', linewidth=1.5,
                label='Threshold = 0.5')
     ax.set_xlim(0, 1)
-    ax.set_xlabel('Botometer Score')
+    ax.set_xlabel('Bot Score')
     ax.set_ylabel('Number of Accounts')
-    ax.set_title('Distribution of Botometer Scores for X/Twitter Authors')
+    ax.set_title('Distribution of Botometer Scores')
     ax.legend()
     plt.tight_layout()
 

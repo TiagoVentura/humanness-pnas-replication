@@ -130,6 +130,8 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 - `gpt_detector_sample_gpt-5_all_posts_20260511.csv`: GPT-5 zero-shot judgments for every pair, produced by `11` on 2026-05-11. Input to `12`.
 
+- `botometer_output.csv`: Botometer bot score and scoring timestamp for the 79 X/Twitter authors that could be scored (account identifiers removed). Input to `20`.
+
 - `political_bias.csv`: the 696 human-authored posts with politicalBiasBERT class probabilities and the assigned Left/Center/Right label. Produced by `code/22_tab_s14_s15_political_lean.py`; input to the same script for Tables S14 and S15.
 
 ## Computational Infrastructure
