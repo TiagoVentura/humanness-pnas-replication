@@ -1,6 +1,6 @@
 ## Replication Materials: _Humans show limited ability to distinguish human-authored and AI-generated political content on social media_
 
-Replication materials for *Humans show limited ability to distinguish human-authored and AI-generated political content on social media*, authored by Sejin Paik, Tiago Ventura, Rebecca Ansell, Leticia Bode, Autumn Toney-Wails, and Lisa Singh, published in the *Proceedings of the National Academy of Sciences*.
+Replication materials for *Humans show limited ability to distinguish human-authored and AI-generated political content on social media*, authored by Sejin Paik, Tiago Ventura, Rebecca Ansell, Leticia Bode, Autumn Toney-Wails, and Lisa Singh, conditionally accepted at the *Proceedings of the National Academy of Sciences*.
 
 > __Abstract:__
 This study employs a set of behavioral experiments to examine how individuals perceive the humanness of social media posts about the 2024 U.S. presidential debate between Kamala Harris and Donald Trump. Posts presented in the experiment were authored either by humans or chatbots, varying the large language model (LLM), the model architecture, the social media platform, and the political personas. Participants judged randomly-paired posts on which they perceived to be AI-generated. We find that human-authored posts were on average perceived as more human-like than AI outputs generated from five of the six LLMs in this study. However, participants' ability to detect AI-generated content is limited. They do so only slightly above chance in human-AI pairs, and this ability weakens for newer LLMs, varies by platform, and reflects partisan bias. Only posts generated with Llama 3.3 scored, on average, higher on perceived humanness than human-authored posts. The social media platform also mattered, with participants distinguishing human from AI on most platforms (YouTube, TikTok, Truth Social), but not on X/Twitter. Incivility and negative emotions are associated with high humanness perceptions, and partisan identity also shaped evaluations, with Republican respondents more likely to view ideologically mis-aligned AI posts as AI-generated.
@@ -10,11 +10,11 @@ This study employs a set of behavioral experiments to examine how individuals pe
 
 This README file provides an overview of the replication materials for the article and its SI Appendix.
 
-The code used in the article and the SI Appendix can be found in the folder `**code**`: 18 R scripts (`00` to `17`) and `run_all.R`, followed by two Python notebooks and three Python scripts, numbered in run order. The upstream steps that build the package's inputs (Bradley-Terry scores, attention checks, text-feature labels) are in `**code/BT_analysis**`.
+The code used in the article and the SI Appendix can be found in the folder `code`: 18 R scripts (`00` to `17`) and `run_all.R`, followed by two Python notebooks and three Python scripts, numbered in run order. The upstream steps that build the package's inputs (Bradley-Terry scores, attention checks, text-feature labels) are in `code/BT_analysis`.
 
-The datasets for the full replication of the article and the SI Appendix can be found in the folder `**data**`.
+The datasets for the full replication of the article and the SI Appendix can be found in the folder `data`.
 
-All figures and tables produced by the code are written to the folder `**output**`, named after their number in the article (`fig1.pdf`, `fig_s5.pdf`, `tab_s12.tex`, and so on).
+All figures and tables produced by the code are written to the folder `output`, named after their number in the article (`fig1.pdf`, `fig_s5.pdf`, `tab_s12.tex`, and so on).
 
 We also provide a [codebook](codebook.md) describing the variables in the analysis datasets.
 
