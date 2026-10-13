@@ -84,6 +84,8 @@ Two steps are not part of `run_all.R`: `11_gpt_ai_detector.R` calls the OpenAI A
 
 - `demographic_analysis/`: `attitudes.ipynb` and `dems.ipynb` compute the survey descriptives in Tables S20, S21, and S22 and the demographic counts used by Table S19. Run from inside the folder; they read from `data/` and write to `output/`.
 
+- `si_analyses/`: three stand-alone scripts for SI items not produced by the R pipeline. `fig_s11_tweeteval_distribution.py` draws the distribution of TweetEval probability scores by authorship family (Figure S11) from `labels_tweeteval.csv`. `tab_s14_s15_political_lean.py` classifies the human-authored posts with politicalBiasBERT (`bucketresearch/politicalBiasBERT`, HuggingFace), writes the political-lean distribution by platform (Table S14) and the OLS regressions of PHI on political lean (Table S15); the classifier output ships as `data/political_bias.csv`, so the script runs without inference unless called with `--force`. `fig_s1_botometer_histogram.py` draws the Botometer score histogram (Figure S1) from `data/botometer_output.csv`. Run each from inside the folder.
+
 - `tweeteval_eval/build_feature_labels.py`: builds `data/tweeteval_eval/labels_tweeteval.csv` (TweetEval labels taken from the post-trait files) and `labels_bertweet.csv` (BERTweet classifiers run through HuggingFace). `datasets.txt` documents the columns.
 
 
@@ -121,9 +123,11 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 - `gpt_detector_sample_gpt-5_all_posts_20260511.csv`: GPT-5 zero-shot judgments for every pair, produced by `11` on 2026-05-11. Input to `12`.
 
+- `political_bias.csv`: the 696 human-authored posts with politicalBiasBERT class probabilities and the assigned Left/Center/Right label. Produced by `code/python/si_analyses/tab_s14_s15_political_lean.py`; input to the same script for Tables S14 and S15.
+
 ## Computational Infrastructure
 
-The Python stage was run with Python 3.11.4, pandas 1.5.3, numpy 1.24.3, statsmodels 0.14.0, and tabulate; the BERTweet step in `build_feature_labels.py` also needs transformers 4.37.2 and torch.
+The Python stage was run with Python 3.11.4, pandas 1.5.3, numpy 1.24.3, statsmodels 0.14.0, and tabulate; the BERTweet step in `build_feature_labels.py` and the politicalBiasBERT step in `tab_s14_s15_political_lean.py` also need transformers 4.37.2 and torch; the SI figure scripts use matplotlib 3.7.1.
 
 To ensure reproducibility, here is the output of `sessionInfo()` with every package used by the R scripts loaded, at the time this project was last run:
 

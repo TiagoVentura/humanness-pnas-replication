@@ -191,6 +191,7 @@ One row per post, all four platforms pooled (2,386 rows, 25 columns). Produced b
 | `survey_followup2.csv` | Qualtrics export of the May 2026 follow-up survey (three-row Qualtrics header, 740 data rows, raw item names such as `AI-freq`, `digital-lit_1`, `participantId`) | `05_prep_followup_data.R` |
 | `x_selected_150_posts.csv`, `yt_selected_150_posts.csv`, `tt_selected_600_posts.csv`, `ts_selected_600_posts.csv` | Stimulus pools (about 600 posts each): `id`, `rt`, `source`, `persona`, `post`, `nchar` | `01_clean_text_pairs.R` |
 | `OE_Humanness.xlsx` | Open-ended cue responses (`ResponseId`, `oe_cues`, six `oe_multiple` ratings, correctness flag) in three sheets: `All` (1,212), `ytx`, `ttts`. Feedback column blanked | `14_qualitative_cues.R` |
+| `political_bias.csv` | Human-authored posts (696 rows) with the `labels_tweeteval.csv` columns plus `prob_Left`, `prob_Center`, `prob_Right` (politicalBiasBERT class probabilities) and `political_label` (argmax) | `code/python/si_analyses/tab_s14_s15_political_lean.py` |
 | `gpt_detector_sample_gpt-5_all_posts_20260511.csv` | Output of the GPT-5 zero-shot detector run of 2026-05-11 (21,201 pair-level API calls): pair identifiers and texts, model settings, raw and parsed answers, token counts | `12_gpt_direct_classifier_figure.R` |
 
 Inputs for the Python stage (raw Qualtrics `VALUES-*.csv` exports with PII removed, post metadata, winner/loser pair files and BT intermediates) sit next to the notebooks under `code/python/x_yt_analysis/` and `code/python/tt_ts_analysis/`.

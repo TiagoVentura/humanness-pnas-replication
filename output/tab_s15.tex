@@ -1,0 +1,26 @@
+\begin{table}[h]
+\centering
+\caption{OLS Regression: Humanness Score by Political Lean (ref.\ = Left)}
+\begin{tabular}[t]{lccccc}
+\toprule
+  & Pooled & X/Twitter & YouTube & TikTok & Truth Social \\
+\midrule
+Left (Intercept)
+  & 0.066 & $-$0.058 & 0.032 & 0.241** & 0.135 \\
+  & (0.038) & (0.067) & (0.083) & (0.079) & (0.078) \\
+Center
+  & $-$0.085 & 0.061 & $-$0.193 & $-$0.416* & 0.077 \\
+  & (0.096) & (0.200) & (0.216) & (0.172) & (0.182) \\
+Right
+  & 0.097* & 0.138 & 0.164 & $-$0.027 & 0.017 \\
+  & (0.047) & (0.090) & (0.098) & (0.094) & (0.097) \\
+\midrule
+Num.\ Obs.  & 696 & 203 & 153 & 179 & 161 \\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}* $p < 0.05$, ** $p < 0.01$, *** $p < 0.001$}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Each column reports OLS estimates from a regression of humanness scores on political lean,}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}with Left as the reference group. The Left row reports the intercept (mean of Left posts);}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Center and Right rows report contrasts relative to Left. Column 1 pools all platforms;}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}columns 2--5 estimate the same model separately for each platform. Standard errors in parentheses.}\\
+\end{tabular}
+\end{table}
