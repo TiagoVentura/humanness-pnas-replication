@@ -3,8 +3,7 @@
 Replication materials for *Humans show limited ability to distinguish human-authored and AI-generated political content on social media*, authored by Sejin Paik, Tiago Ventura, Rebecca Ansell, Leticia Bode, Autumn Toney-Wails, and Lisa Singh, conditionally accepted at the *Proceedings of the National Academy of Sciences*.
 
 > __Abstract:__
-This study employs a set of behavioral experiments to examine how individuals perceive the humanness of social media posts about the 2024 U.S. presidential debate between Kamala Harris and Donald Trump. Posts presented in the experiment were authored either by humans or chatbots, varying the large language model (LLM), the model architecture, the social media platform, and the political personas. Participants judged randomly-paired posts on which they perceived to be AI-generated. We find that human-authored posts were on average perceived as more human-like than AI outputs generated from five of the six LLMs in this study. However, participants' ability to detect AI-generated content is limited. They do so only slightly above chance in human-AI pairs, and this ability weakens for newer LLMs, varies by platform, and reflects partisan bias. Only posts generated with Llama 3.3 scored, on average, higher on perceived humanness than human-authored posts. The social media platform also mattered, with participants distinguishing human from AI on most platforms (YouTube, TikTok, Truth Social), but not on X/Twitter. Incivility and negative emotions are associated with high humanness perceptions, and partisan identity also shaped evaluations, with Republican respondents more likely to view ideologically mis-aligned AI posts as AI-generated.
->
+> This study employs a set of behavioral experiments to examine how individuals perceive the humanness of social media posts about the 2024 U.S. presidential debate between Kamala Harris and Donald Trump. Posts presented in the experiment were authored either by humans or chatbots, varying the large language model (LLM), the model architecture, the social media platform, and the political personas. Participants judged randomly-paired posts on which they perceived to be AI-generated. We find that human-authored posts were on average perceived as more human-like than AI outputs generated from five of the six LLMs in this study. However, participants' ability to detect AI-generated content is limited. They do so only slightly above chance in human-AI pairs, and this ability weakens for newer LLMs, varies by platform, and reflects partisan bias. Only posts generated with Llama 3.3 scored, on average, higher on perceived humanness than human-authored posts. The social media platform also mattered, with participants distinguishing human from AI on most platforms (YouTube, TikTok, Truth Social), but not on X/Twitter. Incivility and negative emotions are associated with high humanness perceptions, and partisan identity also shaped evaluations, with Republican respondents more likely to view ideologically mis-aligned AI posts as AI-generated.
 
 ## Tutorial
 
@@ -136,6 +135,12 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 - `political_bias.csv`: the 696 human-authored posts with politicalBiasBERT class probabilities and the assigned Left/Center/Right label. Produced by `code/22_tab_s14_s15_political_lean.py`; input to the same script for Tables S14 and S15.
 
+## AI Disclosure
+
+This replication package was assembled with the help of Claude Fable 5.1. The assistant helped inventory the figures and tables in the article and SI Appendix, trace each one to its producing script, reorganize and renumber the analysis scripts, remove personal identifiers from the survey data, and draft this README and the codebook. All analysis code was written by the authors for the original study.  Figure and table produced by the package was checked by the authors and by the AI Agent against the published versions. This disclosure covers the replication materials only, not the research or the article.
+
+
+
 ## Computational Infrastructure
 
 The Python stage was run with Python 3.11.4, pandas 1.5.3, numpy 1.24.3, statsmodels 0.14.0, tabulate, and Jupyter (for the notebooks); the BERTweet step in `BT_analysis/build_feature_labels.py` and the politicalBiasBERT step in `22_tab_s14_s15_political_lean.py` also need transformers 4.37.2 and torch; the SI figure scripts use matplotlib 3.7.1.
@@ -218,6 +223,4 @@ loaded via a namespace (and not attached):
 [79] httr_1.4.7            gridtext_0.1.5        MASS_7.3-65          
 ```
 
-## AI Disclosure
-
-This replication package was assembled with the help of Claude (Anthropic), used through the Claude Code command-line tool. The assistant helped inventory the figures and tables in the article and SI Appendix, trace each one to its producing script, reorganize and renumber the analysis scripts, remove personal identifiers from the survey data, and draft this README and the codebook. All analysis code was written by the authors for the original study; the assistant's edits to that code were limited to file paths, output file names and formats, the removal of outputs not in the paper, and comments. Every figure and table produced by the package was checked by the authors against the published versions. This disclosure covers the replication materials only, not the research or the article.
+## 
