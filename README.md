@@ -137,7 +137,7 @@ See the [codebook](codebook.md) for information about the variables in the datas
 
 ## AI Disclosure
 
-This replication package was assembled with the help of Claude Fable 5.1. The assistant helped inventory the figures and tables in the article and SI Appendix, trace each one to its producing script, reorganize and renumber the analysis scripts, remove personal identifiers from the survey data, and draft this README and the codebook. All analysis code was written by the authors for the original study.  Figure and table produced by the package was checked by the authors and by the AI Agent against the published versions. This disclosure covers the replication materials only, not the research or the article.
+This replication package was assembled with the help of Claude Fable 5.1. The AI assistant helped inventory the figures and tables in the article and SI Appendix, trace each one to its producing script, reorganize and renumber the analysis scripts, remove personal identifiers from the survey data, and draft this README and the codebook. The authors wrote all analysis code for the original study.  The authors and the AI assistant checked the package-generated figures and tables against the published versions. This disclosure covers the replication materials only, not the research or the article.
 
 
 
