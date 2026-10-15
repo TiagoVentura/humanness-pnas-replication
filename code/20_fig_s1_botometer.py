@@ -1,4 +1,5 @@
 # 20_fig_s1_botometer.py
+# author: Rebecca Ansell
 #
 # Fig. S1 — Distribution of Botometer scores for the 147 X/Twitter authors
 # included in the survey.  Scores range 0 (least bot-like) to 1 (most

@@ -1,4 +1,5 @@
 # 21_fig_s11_tweeteval.py
+# author: Rebecca Ansell
 #
 # Fig. S11 — Distribution of TweetEval probability scores by authorship
 # family (Human, GPT, LLaMA) for 9 emotive features.

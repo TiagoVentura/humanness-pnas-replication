@@ -1,4 +1,5 @@
 # build_feature_labels.py
+# author: Rebecca Ansell
 #
 # Builds the two classifier-label files read by code/08_semantic_features.R:
 #   data/tweeteval_eval/labels_tweeteval.csv  (Cardiff NLP TweetEval RoBERTa labels,

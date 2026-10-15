@@ -1,4 +1,5 @@
 # 22_tab_s14_s15_political_lean.py
+# author: Rebecca Ansell
 #
 # Table S14 — Political lean distribution of human-authored posts by platform
 #             (Left / Center / Right row proportions; politicalBiasBERT).
